@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 18:08:27 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/11/20 18:26:42 by ahabdelr         ###   ########.fr       */
+/*   Created: 2024/11/20 19:16:43 by ahabdelr          #+#    #+#             */
+/*   Updated: 2024/11/20 19:18:20 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-# define FT_POINT_H
+#include <unistd.h>
 
-typedef struct t_point
+int	ft_strlen(char *str)
 {
-	int	x;
-	int	y;
-}	t_point;
-#endif
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 18:08:27 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/11/20 18:26:42 by ahabdelr         ###   ########.fr       */
+/*   Created: 2024/11/21 18:51:47 by ahabdelr          #+#    #+#             */
+/*   Updated: 2024/11/21 18:51:53 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-# define FT_POINT_H
-
-typedef struct t_point
-{
-	int	x;
-	int	y;
-}	t_point;
-#endif
+#include <unistd.h>
+void ft_putchar(char c);
+void ft_swap(int *a, int *b);
+void ft_putstr(char *str);
+int ft_strlen(char *str);
+int ft_strcmp(char *s1, char *s2);
