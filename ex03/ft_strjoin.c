@@ -38,6 +38,13 @@ char	*ft_join(int size, char **strs, char *sep, char *dest)
 	return (dest);
 }
 
+char	*ft_destruction(char *dest)
+{
+	dest = (char *)malloc(1);
+	dest[0] = '\0';
+	return (dest);
+} 
+
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		i;
@@ -45,7 +52,9 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		n;
 	char	*dest;
 	int		total;
-
+	
+	if (size == 0)
+		return (ft_destruction(dest));
 	total = 0;
 	n = 0;
 	i = 0;
