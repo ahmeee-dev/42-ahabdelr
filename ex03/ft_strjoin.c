@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:56:29 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/11/19 12:18:46 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:43:42 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ char	*ft_join(int size, char **strs, char *sep, char *dest)
 	return (dest);
 }
 
-char	*ft_destruction(char *dest)
+char	*ft_destruction(void)
 {
+	char	*dest;
 	dest = (char *)malloc(1);
 	dest[0] = '\0';
 	return (dest);
@@ -52,9 +53,9 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		n;
 	char	*dest;
 	int		total;
-	
+
 	if (size == 0)
-		return (ft_destruction(dest));
+		return (ft_destruction());
 	total = 0;
 	n = 0;
 	i = 0;
