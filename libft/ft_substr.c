@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 14:47:19 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/12/13 11:15:43 by ahabdelr         ###   ########.fr       */
+/*   Created: 2024/12/11 13:19:58 by ahabdelr          #+#    #+#             */
+/*   Updated: 2024/12/15 22:33:23 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdlib.h>
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+char	*ft_substr(char *str, unsigned int start, size_t len)
 {
-	size_t	i;
+	size_t	str_len;
 	size_t	j;
+	char	*new;
 
 	j = 0;
-	i = 0;
-	while (src[j] != '\0')
-		j++;
-	if (dstsize == 0)
-		return (j);
-	while (i < dstsize - 1 && src[i] != '\0')
+	str_len = 0;
+	while (str[str_len] != '\0')
 	{
-		dest[i] = src[i];
-		i++;
+		str_len++;
 	}
-	dest[i] = '\0';
-	return (j);
+	if (start >= str_len)
+		len = 0;
+	else if (start + len > str_len)
+		len = str_len - start;
+	new = (char *)malloc(len + 1);
+	if (!new)
+		return (NULL);
+	while (j < len)
+	{
+		new[j] = str[start + j];
+		j++;
+	}
+	new[j] = '\0';
+	return (new);
 }

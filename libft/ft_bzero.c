@@ -6,23 +6,24 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:32:04 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/12/10 11:49:41 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:47:52 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	ft_b_zero(void *s, size_t t)
+void	ft_bzero(void *s, size_t t)
 {
-	size_t	i;
-	char	*s_char;
+	size_t			i;
+	unsigned char	*s_char;
 
-	s_char = (char *)s;
+	s_char = (unsigned char *)s;
 	i = 0;
+	if (t == 0)
+		return ;
 	while (i < t)
 	{
 		s_char[i] = '\0';
 		i++;
 	}
-	s = s_char;
 }

@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 09:57:41 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/12/15 22:16:26 by ahabdelr         ###   ########.fr       */
+/*   Created: 2024/12/12 10:58:21 by ahabdelr          #+#    #+#             */
+/*   Updated: 2024/12/15 22:22:51 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include <stdlib.h>
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
-	int	res;
-	int	sign;
+	char	*dest;
+	int		i;
 
 	i = 0;
-	res = 0;
-	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == ' '))
+	while (s[i] != '\0')
 		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	dest = (char *)malloc(i + 1);
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
 	{
-		sign = -1;
+		dest[i] = (*f)(i, s[i]);
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = res * 10 + (str[i] - '0');
-		i++;
-	}
-	return (sign * res);
+	dest[i] = '\0';
+	return (dest);
 }

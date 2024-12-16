@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:44:37 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/12/10 17:54:57 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:22:06 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strchr(char *s, int c)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -23,5 +23,7 @@ char	*ft_strchr(char *s, int c)
 			return (s + i);
 		i++;
 	}
-	return NULL;
+	if ((char)c == '\0')
+		return (s + i);
+	return (NULL);
 }
