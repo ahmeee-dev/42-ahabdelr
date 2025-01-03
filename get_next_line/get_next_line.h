@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 11:10:26 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/12/15 22:22:24 by ahabdelr         ###   ########.fr       */
+/*   Created: 2024/12/30 15:30:59 by ahabdelr          #+#    #+#             */
+/*   Updated: 2025/01/03 11:06:10 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
-{
-	unsigned int	i;
+int	ft_strlen(char *str, int type);
+void	ft_strjoin(char **result, char *str);
+char	*get_next_line(int fd);
 
-	i = 0;
-	while (s[i] != '\0')
-	{
-		(f)(i, &s[i]);
-		i++;
-	}
-}
+#endif

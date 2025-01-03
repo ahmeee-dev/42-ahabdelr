@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:00:21 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/12/16 17:21:22 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2024/12/30 16:25:30 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*god(const char *s1, const char *s2)
 	else if (!s2)
 	{
 		new = (char *)malloc(ft_strlen(s1) + 1);
-		while (s1[i] < ft_strlen(s1))
+		while (i < ft_strlen(s1))
 		{
 			new[i] = s1[i];
 			i++;
