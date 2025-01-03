@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:00:47 by ahabdelr          #+#    #+#             */
-/*   Updated: 2024/12/23 09:23:40 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:18:54 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	ft_ptr(unsigned long ptr)
 	char	*set;
 	int		c;
 
+	if (ptr == NULL)
+	{
+		write(1, "(nil)", 5);
+		return ;
+	}
 	set = "0123456789abcdef";
 	if (ptr >= 16)
 		ft_ptr(ptr / 16);
