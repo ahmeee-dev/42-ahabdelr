@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 int		ft_strlen(char *str, int type);
 void	ft_strjoin(char **result, char **str);
 char	*get_next_line(int fd);
+int		first_call(int *i, int *n, int fd);
 
 #endif

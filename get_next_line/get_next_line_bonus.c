@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,10 +20,10 @@
 # define BUFFER_SIZE 42
 #endif
 
-int		ft_strchr(char *s, int c);
 void	ft_strjoin(char **result, char **str);
 void	new_line_in_rest(char **rest, int k, int *i);
 int		ft_strlen(char *str, int type);
+int		first_call(int *i, int *n, int fd);
 
 char	*last_call(char **str, char **result)
 {
@@ -86,15 +86,15 @@ void	rest_copy(char **rest, char **result, int *i)
 
 char	*get_next_line(int fd)
 {
-	static char	*rest;
+	static char	*rest[FOPEN_MAX];
 	char		*result;
 	char		*str;
 	int			i;
 	int			n;
 
-	i = -2;
-	n = -2;
-	rest_copy(&rest, &result, &i);
+	if (!first_call(&i, &n, fd))
+		return (NULL);
+	rest_copy(&rest[fd], &result, &i);
 	str = (char *)malloc(BUFFER_SIZE + 1);
 	while (i == n)
 	{
@@ -106,7 +106,7 @@ char	*get_next_line(int fd)
 		{
 			i = ft_strlen(str, 3);
 			if (i != n && i >= 0 && i < n - 1)
-				rest_creation(&rest, &str, i);
+				rest_creation(&rest[fd], &str, i);
 		}
 		ft_strjoin(&result, &str);
 	}

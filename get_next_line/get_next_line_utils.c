@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	ft_strjoin(char **result, char *str)
+void	ft_strjoin(char **result, char **str)
 {
 	int		res_len;
 	int		str_len;
@@ -26,41 +26,22 @@ void	ft_strjoin(char **result, char *str)
 	i = 0;
 	counter = 0;
 	res_len = ft_strlen(*result, 1);
-	str_len = ft_strlen(str, 1);
+	str_len = ft_strlen(*str, 1);
 	result_str = (char *)malloc(res_len + str_len + 1);
 	while (res_len > 0 && (*result)[counter] != '\0')
 	{
 		result_str[counter] = (*result)[counter];
 		counter++;
 	}
-	while (str_len > 0 && str[i] != '\0')
+	while (str_len > 0 && (*str)[i] != '\0')
 	{
-		result_str[counter] = str[i];
+		result_str[counter] = (*str)[i];
 		counter++;
 		i++;
 	}
 	result_str[counter] = '\0';
-	// free(*result);
-	// free(str);
+	free(*result);
 	(*result) = result_str;
-}
-
-int	ft_strchr(char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (-3);
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			return (i);
-		i++;
-	}
-	if ((char)c == '\0')
-		return (i);
-	return (i);
 }
 
 void	new_line_in_rest(char **rest, int k, int *i)
@@ -83,7 +64,7 @@ void	new_line_in_rest(char **rest, int k, int *i)
 
 int	ft_strlen(char *str, int type)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -94,11 +75,11 @@ int	ft_strlen(char *str, int type)
 			i++;
 		return (i);
 	}
-	else if (type == 2)
+	else if (type == 2 || type == 3)
 	{
 		while (str[i] != '\0' && str[i] != '\n')
 			i++;
-		if (str[i] == '\n')
+		if (str[i] == '\n' && type == 2)
 			i++;
 		return (i);
 	}
