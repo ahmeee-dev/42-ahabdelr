@@ -12,7 +12,12 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <fcntl.h>
+# include <stdarg.h>
 # include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -65,5 +70,21 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 t_list				*ft_lstnew(void *content);
 void				ft_lstclear(t_list **lst, void (*del)(void *));
+
+// get_next_line
+
+int					ft_strlen_type(char *str, int type);
+void				ft_strjoin_line(char **result, char **str);
+char				*get_next_line(int fd);
+int					first_call(int *i, int *n, int fd);
+
+// printf
+
+int					ft_external(char c, va_list *jul);
+int					ft_printf(const char *str, ...);
+void				ft_ptr(unsigned long ptr);
+void				ptr_count(unsigned long ptr, int *i);
+void				unsigned_count(unsigned int n, int *i, int q);
+void				ft_unsigned(unsigned int n, int q);
 
 #endif

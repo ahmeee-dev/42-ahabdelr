@@ -18,6 +18,8 @@ char	*ft_strdup(char *str)
 	size_t	i;
 	char	*new;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (str[i] != '\0')
 		i++;

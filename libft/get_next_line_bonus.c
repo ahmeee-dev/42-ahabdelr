@@ -10,19 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "libft.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 1
 #endif
 
-void	ft_strjoin(char **result, char **str);
+void	ft_strjoin_line(char **result, char **str);
 void	new_line_in_rest(char **rest, int k, int *i);
-int		ft_strlen(char *str, int type);
+int		ft_strlen_type(char *str, int type);
 int		first_call(int *i, int *n, int fd);
 
 char	*last_call(char **str, char **result)
@@ -47,7 +47,7 @@ void	rest_creation(char **rest, char **str, int i)
 	int		n;
 
 	n = 0;
-	new_temp = (char *)malloc(ft_strlen(*str, 1) - i);
+	new_temp = (char *)malloc(ft_strlen_type(*str, 1) - i);
 	i++;
 	while ((*str)[i + n] != '\0')
 	{
@@ -65,7 +65,7 @@ void	rest_copy(char **rest, char **result, int *i)
 	int	size;
 
 	j = 0;
-	size = ft_strlen(*rest, 2);
+	size = ft_strlen_type(*rest, 2);
 	if (size == 0)
 		(*result) = ft_free(rest);
 	else
@@ -104,29 +104,11 @@ char	*get_next_line(int fd)
 		str[n] = '\0';
 		if (n > 0)
 		{
-			i = ft_strlen(str, 3);
+			i = ft_strlen_type(str, 3);
 			if (i != n && i >= 0 && i < n - 1)
 				rest_creation(&rest[fd], &str, i);
 		}
-		ft_strjoin(&result, &str);
+		ft_strjoin_line(&result, &str);
 	}
 	return (last_call(&str, &result));
-}
-
-int	main(void)
-{
-	int fd;
-	char *s;
-
-	fd = 0;
-	s = get_next_line(fd);
-	while (s)
-	{
-		printf("%s", s);
-		free (s);
-		s = get_next_line(fd);
-	}
-	// printf("%s", get_next_line(fd));
-	// printf("%s", get_next_line(fd));
-	return (0);
 }
