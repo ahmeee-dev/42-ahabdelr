@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_count.c                                        :+:      :+:    :+:   */
+/*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:14:49 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/22 16:52:26 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:43:41 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,48 @@
 #include <unistd.h>
 #include <stdio.h>
 
+
+int	find_occurrence(char *str)
+{
+	int	i;
+	int	res;
+
+	res = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ' && str[i - 1] && (str[i - 1] != ' '))
+			res++;
+		i++;
+	}
+	if ((str[i - 1]) && !(str[i - 1] == ' '))
+		res++;
+	return (res);
+}
+
 void	map_size_xy(int fd, t_map *map)
 {
 	char	*res;
 
 	map->map_x = 0;
 	map->map_y = 0;
+	res = get_next_line(fd);
+	map->map_x = find_occurrence(res);
 	while (res != NULL)
 	{
-		res = get_next_line(fd);
 		if (res)
-		{
-			map->map_x = ft_strlen(res);
 			map->map_y++;
-		}
+		res = get_next_line(fd);
 	}
+	free(res);
 	close(fd);
 }
 
-void	map_placement(int fd, t_map *map)
+void	map_size(t_map *map)
 {
-	int	i;
-
-	map->map_row = (char **)malloc(sizeof(char *) * map->map_y);
-	while (i < map->map_y)
-	{
-		map->map_row[i] = get_next_line(fd);
-		i++;
-	}
-}
-
-void map_size(char *file, t_map *map)
-{
-	int	fd;
-
-	file = ft_strjoin("testmaps/", file);
-	file = ft_strjoin(file, ".fdf");
-	fd = open(file, O_RDONLY);
-	map_size_xy(fd, map);
-	fd = open(file, O_RDONLY);
-	map_placement(fd, map);
-	close(fd);
+	
+	map->file = ft_strjoin(map->file, ".fdf");
+	map->fd = open(map->file, O_RDONLY);
+	map_size_xy(map->fd, map);
 }
 

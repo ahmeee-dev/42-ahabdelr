@@ -6,16 +6,15 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:37:15 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/23 15:40:52 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:31:39 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# define HEIGHT 800
-# define WIDTH 1280
+# define HEIGHT 450
+# define WIDTH 720
 
 void map_size(t_map *map);
 void	matrix_population(t_coordinates **matrix, t_map *map);
-void	screen_init(t_screen *screen);
 
 typedef struct	s_map
 {

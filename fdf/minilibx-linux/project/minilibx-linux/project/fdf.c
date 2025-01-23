@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 08:56:04 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/23 15:44:19 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:32:02 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	fdf(int argc, char **argv)
 
 	map.file = argv[1];
 	matrix = get_eminem(&map, argv[1]);
-	screen_init(&screen);
 }
 
 t_coordinates	*get_eminem(t_map *map, char *arg)

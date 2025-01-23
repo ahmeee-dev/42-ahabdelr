@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atod.c                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 12:46:52 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/22 12:57:02 by ahabdelr         ###   ########.fr       */
+/*   Created: 2024/12/12 11:10:26 by ahabdelr          #+#    #+#             */
+/*   Updated: 2024/12/15 22:22:24 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atod(char *str)
+#include "libft.h"
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int	i;
-	int	res;
-	int	sign;
+	unsigned int	i;
 
-
+	i = 0;
+	while (s[i] != '\0')
+	{
+		(f)(i, &s[i]);
+		i++;
+	}
 }
