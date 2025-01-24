@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen_gestion.c                                   :+:      :+:    :+:   */
+/*   traslation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 15:30:09 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/24 17:40:22 by ahabdelr         ###   ########.fr       */
+/*   Created: 2025/01/24 10:48:41 by ahabdelr          #+#    #+#             */
+/*   Updated: 2025/01/24 17:30:25 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
 #include "libft/libft.h"
-#include <unistd.h>
-#include <stdio.h>
+#include "stdio.h"
+#include "fdf.h"
 #include "minilibx-linux/mlx.h"
+#include <math.h>
 
-void	screen_init(t_screen *screen)
+void	traslation(t_data *data, int dir)
 {
-	screen->mlx = mlx_init();
-	screen->win = mlx_new_window(screen->mlx, WIDTH, HEIGHT, "FdF");
-	screen->img = mlx_new_image(screen->mlx, WIDTH, HEIGHT);
-}
+	int	size;
 
-void	start(t_data *data)
-{
-	data->vector->tx = 2.8284;
-	data->vector->ty = 1.3178;
-	data->vector->tz = 1;
-	data->vector->ax = WIDTH/2 - data->map->map_x / 2;
-	data->vector->ay = HEIGHT/2 - data->map->map_y / 2;
+	size = 5;
+	if (dir == 1)
+		data->vector->ax += size;
+	else if (dir == 2)
+		data->vector->ay += size;
+	else if (dir == -1)
+		data->vector->ax -= size;
+	else if (dir == -2)
+		data->vector->ay -= size;
 }

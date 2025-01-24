@@ -6,16 +6,35 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:37:15 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/23 15:40:52 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/24 17:58:21 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # define HEIGHT 800
 # define WIDTH 1280
+# define PI 3.1415926
 
+//screen - map
 void map_size(t_map *map);
 void	matrix_population(t_coordinates **matrix, t_map *map);
 void	screen_init(t_screen *screen);
+void	node_init(t_data *data, t_coordinates **matrix, t_vector *vector, t_screen *screen);
+
+//mouse gestion
+int	mouse_move(int x, int y, t_data *data);
+int	mouse(int button, int x, int y, t_data *data);
+int	mouse_release(int button, int x, int y, t_data *data);
+int	keypress(int key, t_data *data);
+
+//transformations
+void	traslation(t_data *data, int dir);
+void	x_rotation(t_data *data, int sign);
+void	y_rotation(t_data *data, int sign);
+void	z_rotation(t_data *data, int sign);
+
+//render
+void	my_image(t_data *data);
+void	render(t_data *data);
 
 typedef struct	s_map
 {
@@ -38,11 +57,30 @@ typedef struct s_vector
 	double	tx;
 	double	ty;
 	double	tz;
+	int	ax;
+	int	ay;
 }		t_vector;
 
 typedef struct	s_screen
 {
+	//riordina le variabili nella struct
+	int	press;
 	void	*mlx;
 	void	*win;
 	void	*img;
+	void	*addr;
+	int	bpp;
+	int	endian;
+	int	size_line;
+	char	*position;
+	int	prev_x;
+	int	prev_y;
 }		t_screen;
+
+typedef struct	s_data
+{
+	t_coordinates	**matrix;
+	t_vector	*vector;
+	t_screen	*screen;
+	t_map		*map;
+}		t_data;

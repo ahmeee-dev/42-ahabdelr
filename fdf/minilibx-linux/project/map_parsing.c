@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:14:49 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/23 15:43:41 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:49:07 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ int	find_occurrence(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == ' ' && str[i - 1] && (str[i - 1] != ' '))
+		if (str[i] == ' ' && i > 0 && (str[i - 1] != ' '))
 			res++;
 		i++;
 	}
-	if ((str[i - 1]) && !(str[i - 1] == ' '))
+	if (i > 0 && !(str[i - 1] == ' '))
 		res++;
 	return (res);
 }
 
+// da gestire i free di gnl
 void	map_size_xy(int fd, t_map *map)
 {
 	char	*res;

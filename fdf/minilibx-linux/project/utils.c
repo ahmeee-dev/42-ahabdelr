@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen_gestion.c                                   :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 15:30:09 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/24 17:40:22 by ahabdelr         ###   ########.fr       */
+/*   Created: 2025/01/24 17:23:13 by ahabdelr          #+#    #+#             */
+/*   Updated: 2025/01/24 18:00:48 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,12 @@
 #include <stdio.h>
 #include "minilibx-linux/mlx.h"
 
-void	screen_init(t_screen *screen)
+void	node_init(t_data *data, t_coordinates **matrix, t_vector *vector, t_screen *screen)
 {
-	screen->mlx = mlx_init();
-	screen->win = mlx_new_window(screen->mlx, WIDTH, HEIGHT, "FdF");
-	screen->img = mlx_new_image(screen->mlx, WIDTH, HEIGHT);
-}
-
-void	start(t_data *data)
-{
-	data->vector->tx = 2.8284;
-	data->vector->ty = 1.3178;
-	data->vector->tz = 1;
-	data->vector->ax = WIDTH/2 - data->map->map_x / 2;
-	data->vector->ay = HEIGHT/2 - data->map->map_y / 2;
+	data->matrix = matrix;
+	data->screen = screen;
+	data->screen->prev_x = 0;
+	data->screen->prev_y = 0;
+	data->vector = vector;
+	start(data);
 }

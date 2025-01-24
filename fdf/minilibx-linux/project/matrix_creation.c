@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:41:18 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/23 15:25:50 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:50:49 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ float	atof(char *str, int done)
 	sign = initialize(&res, &f_check, &i, &j);
 	while (j < done)
 	{
-		if (str[i] == ' ' && (str + i - 1) && (str + i - 1 != ' '))
+		if (str[i] == ' ' && i > 0 && (str[i - 1] != ' '))
 			j++;
 		i++;
 	}

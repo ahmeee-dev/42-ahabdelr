@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen_gestion.c                                   :+:      :+:    :+:   */
+/*   scale.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 15:30:09 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/24 17:40:22 by ahabdelr         ###   ########.fr       */
+/*   Created: 2025/01/24 10:33:35 by ahabdelr          #+#    #+#             */
+/*   Updated: 2025/01/24 18:31:47 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
 #include "libft/libft.h"
-#include <unistd.h>
-#include <stdio.h>
+#include "stdio.h"
+#include "fdf.h"
 #include "minilibx-linux/mlx.h"
+#include <math.h>
 
-void	screen_init(t_screen *screen)
+void	up_scale(t_data *data)
 {
-	screen->mlx = mlx_init();
-	screen->win = mlx_new_window(screen->mlx, WIDTH, HEIGHT, "FdF");
-	screen->img = mlx_new_image(screen->mlx, WIDTH, HEIGHT);
+	data->vector->tx *= 1.1;
+	data->vector->ty *= 1.1;
+	data->vector->tz *= 1.1;
+	render(data);
 }
 
-void	start(t_data *data)
+void	down_scale(t_data *data)
 {
-	data->vector->tx = 2.8284;
-	data->vector->ty = 1.3178;
-	data->vector->tz = 1;
-	data->vector->ax = WIDTH/2 - data->map->map_x / 2;
-	data->vector->ay = HEIGHT/2 - data->map->map_y / 2;
+	data->vector->tx *= 0.9;
+	data->vector->ty *= 0.9;
+	data->vector->tz *= 0.9;
+	render(data);
 }
