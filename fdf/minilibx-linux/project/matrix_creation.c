@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:41:18 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/24 18:50:49 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:19:47 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ float	initialize(float *res, float *f_check, int *i, int *j)
 	(*j) = 0;
 	return (1.0);
 }
-float	atof(char *str, int done)
+float	ft_atof(char *str, int done)
 {
 	int	i;
 	int	j;
@@ -50,20 +50,21 @@ float	atof(char *str, int done)
 	return ((res * sign) / f_check);
 }
 
-void	line_division(int *i, char *str, t_coordinates **matrix, t_map *map)
+void	line_division(int *i, char *str, t_coordinates *matrix, t_map *map)
 {
 	int	done;
 
 	done = 0;
 	while (done < map->map_x)
 	{
-		matrix[*i]->z = atof(str, done);
+		matrix[*i].z = ft_atof(str, done);
+// errore nella assegnazione di z	
 		done++;
 		(*i)++;
 	}
 }
 
-void	z_position(t_coordinates **matrix, t_map *map)
+void	z_position(t_coordinates *matrix, t_map *map)
 {
 	int	i;
 	char	*res;
@@ -82,13 +83,14 @@ void	matrix_population(t_coordinates **matrix, t_map *map)
 {
 	int	i;
 	
+
 	i = 0;
 	while (i < map->map_x * map->map_y)
 	{
-		matrix[i]->x = i % map->map_x;
-		matrix[i]->y = i / map->map_x;
+		(*matrix)[i].x = i % map->map_x;
+		(*matrix)[i].y = i / map->map_x;
 		i++;
 	}
-	z_position(matrix, map);
+	z_position(*matrix, map);
 }
 

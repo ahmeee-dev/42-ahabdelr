@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:30:09 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/24 17:40:22 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:32:45 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,40 @@ void	screen_init(t_screen *screen)
 	screen->win = mlx_new_window(screen->mlx, WIDTH, HEIGHT, "FdF");
 	screen->img = mlx_new_image(screen->mlx, WIDTH, HEIGHT);
 }
+
+// void	screen_init(t_screen *screen)
+// {
+// 	screen->mlx = mlx_init();
+// 	if (!screen->mlx)
+// 	{
+// 		ft_printf("Errore: Impossibile inizializzare mlx\n");
+// 		exit(1);
+// 	}
+// 	screen->win = mlx_new_window(screen->mlx, WIDTH, HEIGHT, "FdF");
+// 	if (!screen->win)
+// 	{
+// 		ft_printf("Errore: Impossibile creare una finestra\n");
+// 		exit(1);
+// 	}
+// 	screen->img = mlx_new_image(screen->mlx, WIDTH, HEIGHT);
+// 	if (!screen->img)
+// 	{
+// 		ft_printf("Errore: Impossibile creare un'immagine\n");
+// 		exit(1);
+// 	}
+
+// 	// Ottenere l'indirizzo del buffer immagine
+// 	screen->addr = mlx_get_data_addr(screen->img, &screen->bpp, &screen->size_line, &screen->endian);
+// 	if (!screen->addr)
+// 	{
+// 		ft_printf("Errore: Impossibile ottenere l'indirizzo del buffer immagine\n");
+// 		exit(1);
+// 	}
+
+// 	// Stampa di debug per verificare
+// 	ft_printf("bpp: %d, size_line: %d, endian: %d\n", screen->bpp, screen->size_line, screen->endian);
+// }
+
 
 void	start(t_data *data)
 {

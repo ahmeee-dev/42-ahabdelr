@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:57:19 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/24 18:03:49 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/25 07:36:41 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	mouse_move(int x, int y, t_data *data)
 
 int	mouse(int button, int x, int y, t_data *data)
 {
+	(void)x;
+	(void)y;
 	if (button == 1)
 	{
 		data->screen->press = 1;
@@ -55,6 +57,8 @@ int	mouse(int button, int x, int y, t_data *data)
 
 int	mouse_release(int button, int x, int y, t_data *data)
 {
+	(void)x;
+	(void)y;
 	if (button == 1)
 		data->screen->press = 0;
 	return (0);
