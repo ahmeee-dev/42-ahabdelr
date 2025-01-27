@@ -14,9 +14,6 @@
 # define WIDTH 1280
 # define PI 3.1415926
 
-//	ft_printf("%d --- %d", map->map_x, map->map_y);
-
-
 typedef struct	s_map
 {
 	char	*file;

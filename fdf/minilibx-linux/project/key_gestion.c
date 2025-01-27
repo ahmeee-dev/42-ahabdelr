@@ -42,6 +42,5 @@ int	keypress(int key, t_data *data)
 	else if (key == 'r')
 		start(data);
 	render(data);
-	return (0);
 }
 

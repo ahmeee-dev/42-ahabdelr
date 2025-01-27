@@ -54,11 +54,11 @@ int	main(int argc, char **argv)
 	node_init(&data, &matrix, &vector, &screen);
 	data.map = &map;
 	start(&data);
-	mlx_get_data_addr(screen.img, &screen.bpp, &screen.size_line, &screen.endian);
+	screen.addr = mlx_get_data_addr(screen.img, &screen.bpp, &screen.size_line, &screen.endian);
 	render(&data);
-	mlx_hook(screen.mlx, 2, 1L << 0, keypress, &data);
-	mlx_hook(screen.mlx, 4, 0, mouse, &data);
-	mlx_hook(screen.mlx, 5, 0, mouse_release, &data);
+	mlx_hook(screen.win, 2, 1L << 0, keypress, &data);
+	mlx_hook(screen.win, 4, 0, mouse, &data);
+	mlx_hook(screen.win, 5, 0, mouse_release, &data);
 	mlx_hook(screen.mlx, 6, 0, mouse_move, &data);
 	mlx_loop(data.screen->mlx);
 }

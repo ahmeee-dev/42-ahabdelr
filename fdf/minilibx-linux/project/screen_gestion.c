@@ -59,9 +59,10 @@ void	screen_init(t_screen *screen)
 
 void	start(t_data *data)
 {
-	data->vector->tx = 2.8284;
-	data->vector->ty = 1.3178;
-	data->vector->tz = 1;
-	data->vector->ax = WIDTH/2 - data->map->map_x / 2;
-	data->vector->ay = HEIGHT/2 - data->map->map_y / 2;
+	data->vector->tx = 2.8284 * 10;
+	data->vector->ty = 1.3178 * 10;
+	data->vector->tz = 2 * 10;
+	//aggiungere centramento 
+	data->vector->ay = 0;
+	data->vector->ax = 0;
 }

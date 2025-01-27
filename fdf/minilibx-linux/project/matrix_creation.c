@@ -58,7 +58,6 @@ void	line_division(int *i, char *str, t_coordinates *matrix, t_map *map)
 	while (done < map->map_x)
 	{
 		matrix[*i].z = ft_atof(str, done);
-// errore nella assegnazione di z	
 		done++;
 		(*i)++;
 	}
