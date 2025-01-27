@@ -2,7 +2,7 @@
 NAME = fdf
 
 # Compilatore e flag
-CC = gcc
+CC = gcc -g
 CFLAGS = 
 
 # Percorsi

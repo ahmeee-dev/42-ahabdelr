@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:06:26 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/25 16:32:10 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:42:58 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	my_image(t_data *data)
 			{
 				data->screen->position = (data->screen->addr + trans_x * (data->screen->size_line) + trans_y * (data->screen->bpp / 8));
 				//l'errore nasce quando provo ad accedere a questa memoria
-				//*(unsigned int*)(data->screen->position) = 0x00FF00;
-				ft_printf("%d --- %d\n", x, y);
+				*(unsigned int*)(data->screen->position) = 0x00FF00;
+				// ft_printf("%d --- %d\n", x, y);
 			}
 			x++;
 		}
