@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "stdio.h"
 #include "fdf.h"
+#include "libft/libft.h"
 #include "minilibx-linux/mlx.h"
+#include "stdio.h"
 #include <math.h>
 
 void	traslation(t_data *data, int dir)
 {
 	int	size;
 
-	size = 5;
+	size = 15;
 	if (dir == 1)
 		data->vector->ax += size;
 	else if (dir == 2)

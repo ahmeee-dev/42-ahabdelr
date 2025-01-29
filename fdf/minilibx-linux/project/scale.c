@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "stdio.h"
 #include "fdf.h"
+#include "libft/libft.h"
 #include "minilibx-linux/mlx.h"
+#include "stdio.h"
 #include <math.h>
 
 void	up_scale(t_data *data)

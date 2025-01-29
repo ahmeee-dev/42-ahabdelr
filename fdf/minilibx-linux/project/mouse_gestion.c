@@ -15,11 +15,14 @@
 #include "fdf.h"
 #include "minilibx-linux/mlx.h"
 
-int	mouse_move(int x, int y, t_data *data)
+int	mouse_move(int x, int y, void *param)
 {
 	int	dx;
 	int	dy;
+	t_data	*data;
 
+	ft_printf("ok");
+	data = (t_data *)param;
 	if (data->screen->press == 1)
 	{
 		dx = x - data->screen->prev_x;
@@ -33,10 +36,14 @@ int	mouse_move(int x, int y, t_data *data)
 	return (0);
 }
 
-int	mouse(int button, int x, int y, t_data *data)
+int	mouse(int button, int x, int y, void *param)
 {
 	(void)x;
 	(void)y;
+	t_data	*data;
+
+		ft_printf("ok1");
+	data = (t_data *)param;
 	if (button == 1)
 	{
 		data->screen->press = 1;
@@ -55,10 +62,13 @@ int	mouse(int button, int x, int y, t_data *data)
 	return (0);
 }
 
-int	mouse_release(int button, int x, int y, t_data *data)
+int	mouse_release(int button, int x, int y, void *param)
 {
 	(void)x;
 	(void)y;
+	t_data	*data;
+
+	data = (t_data *)param;
 	if (button == 1)
 		data->screen->press = 0;
 	return (0);

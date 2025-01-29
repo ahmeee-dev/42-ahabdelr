@@ -59,7 +59,7 @@ int	main(int argc, char **argv)
 	mlx_hook(screen.win, 2, 1L << 0, keypress, &data);
 	mlx_hook(screen.win, 4, 0, mouse, &data);
 	mlx_hook(screen.win, 5, 0, mouse_release, &data);
-	mlx_hook(screen.mlx, 6, 0, mouse_move, &data);
+	mlx_hook(screen.win, 6, 0, mouse_move, &data);
 	mlx_loop(data.screen->mlx);
 }
 

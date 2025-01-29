@@ -12,11 +12,12 @@
 
 #include "fdf.h"
 #include "libft/libft.h"
-#include <unistd.h>
-#include <stdio.h>
 #include "minilibx-linux/mlx.h"
+#include <stdio.h>
+#include <unistd.h>
 
-void	node_init(t_data *data, t_coordinates **matrix, t_vector *vector, t_screen *screen)
+void	node_init(t_data *data, t_coordinates **matrix, t_vector *vector,
+		t_screen *screen)
 {
 	data->matrix = (*matrix);
 	data->screen = screen;

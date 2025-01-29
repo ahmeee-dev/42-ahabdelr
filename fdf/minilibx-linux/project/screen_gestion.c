@@ -12,9 +12,9 @@
 
 #include "fdf.h"
 #include "libft/libft.h"
-#include <unistd.h>
-#include <stdio.h>
 #include "minilibx-linux/mlx.h"
+#include <stdio.h>
+#include <unistd.h>
 
 void	screen_init(t_screen *screen)
 {
@@ -23,46 +23,13 @@ void	screen_init(t_screen *screen)
 	screen->img = mlx_new_image(screen->mlx, WIDTH, HEIGHT);
 }
 
-// void	screen_init(t_screen *screen)
-// {
-// 	screen->mlx = mlx_init();
-// 	if (!screen->mlx)
-// 	{
-// 		ft_printf("Errore: Impossibile inizializzare mlx\n");
-// 		exit(1);
-// 	}
-// 	screen->win = mlx_new_window(screen->mlx, WIDTH, HEIGHT, "FdF");
-// 	if (!screen->win)
-// 	{
-// 		ft_printf("Errore: Impossibile creare una finestra\n");
-// 		exit(1);
-// 	}
-// 	screen->img = mlx_new_image(screen->mlx, WIDTH, HEIGHT);
-// 	if (!screen->img)
-// 	{
-// 		ft_printf("Errore: Impossibile creare un'immagine\n");
-// 		exit(1);
-// 	}
-
-// 	// Ottenere l'indirizzo del buffer immagine
-// 	screen->addr = mlx_get_data_addr(screen->img, &screen->bpp, &screen->size_line, &screen->endian);
-// 	if (!screen->addr)
-// 	{
-// 		ft_printf("Errore: Impossibile ottenere l'indirizzo del buffer immagine\n");
-// 		exit(1);
-// 	}
-
-// 	// Stampa di debug per verificare
-// 	ft_printf("bpp: %d, size_line: %d, endian: %d\n", screen->bpp, screen->size_line, screen->endian);
-// }
-
-
 void	start(t_data *data)
 {
-	data->vector->tx = 2.8284 * 10;
-	data->vector->ty = 1.3178 * 10;
-	data->vector->tz = 2 * 10;
-	//aggiungere centramento 
-	data->vector->ay = 0;
-	data->vector->ax = 0;
+	data->vector->tx = 30;
+	data->vector->ty = 45;
+	data->vector->tz = 0;
+	data->vector->ay = HEIGHT / 2 - 300 - data->map->map_y / 2;
+	data->vector->ax = WIDTH / 2 - data->map->map_x / 2;
+	data->vector->scale = (HEIGHT / (data->map->map_y) + WIDTH
+			/ data->map->map_x) * 1 / 6;
 }
