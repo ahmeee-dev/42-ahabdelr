@@ -18,16 +18,12 @@
 
 void	up_scale(t_data *data)
 {
-	data->vector->tx *= 1.1;
-	data->vector->ty *= 1.1;
-	data->vector->tz *= 1.1;
-	render(data);
+	if (data->vector->scale < 150)
+		data->vector->scale += 2;
 }
 
 void	down_scale(t_data *data)
 {
-	data->vector->tx *= 0.9;
-	data->vector->ty *= 0.9;
-	data->vector->tz *= 0.9;
-	render(data);
+	if (data->vector->scale >= 6)
+		data->vector->scale -= 2;
 }

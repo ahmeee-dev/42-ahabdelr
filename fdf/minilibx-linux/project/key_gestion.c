@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "stdio.h"
 #include "fdf.h"
+#include "libft/libft.h"
 #include "minilibx-linux/mlx.h"
+#include "stdio.h"
 
 int	keypress(int key, t_data *data)
 {
-	if(key == 65362)
+	if (key == 65362)
 		traslation(data, -2);
-	else if(key == 65364)
+	else if (key == 65364)
 		traslation(data, 2);
-	else if(key == 65361)
+	else if (key == 65361)
 		traslation(data, -1);
-	else if(key == 65363)
+	else if (key == 65363)
 		traslation(data, 1);
 	else if (key == 'w')
 		x_rotation(data, 0);
@@ -37,10 +37,13 @@ int	keypress(int key, t_data *data)
 		z_rotation(data, 0);
 	else if (key == 'm')
 		z_rotation(data, -1);
+	else if (key == 'j')
+		up_scale(data);
+	else if (key == 'k')
+		down_scale(data);
 	else if (key == 65307)
-	 	exit(0); //ancora da dichiarare
+		exit(0); // ancora da dichiarare
 	else if (key == 'r')
 		start(data);
 	render(data);
 }
-

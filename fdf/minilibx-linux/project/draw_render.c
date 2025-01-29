@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 #include "libft/libft.h"
-#include "math.h"
+#include <math.h>
 #include "minilibx-linux/mlx.h"
 #include <stdio.h>
 #include <unistd.h>
