@@ -41,9 +41,14 @@ int	keypress(int key, t_data *data)
 		up_scale(data);
 	else if (key == 'k')
 		down_scale(data);
+	else if (key == '8')
+		z_up_down(data, 1);
+	else if (key == '9')
+		z_up_down(data, -1);
 	else if (key == 65307)
 		exit(0); // ancora da dichiarare
 	else if (key == 'r')
 		start(data);
 	render(data);
+	return (0);
 }

@@ -25,3 +25,26 @@ void	node_init(t_data *data, t_coordinates **matrix, t_vector *vector,
 	data->screen->prev_y = 0;
 	data->vector = vector;
 }
+
+void	swap(t_coordinates *old, t_coordinates *new, int let)
+{
+	t_coordinates	temp;
+
+	if ((let == 'x' && old->x > new->x) || (let == 'y' && old->y > new->y))
+	{
+		temp.x = old->x;
+		temp.y = old->y;
+		old->x = new->x;
+		old->y = new->y;
+		new->x = temp.x;
+		new->y = temp.y;
+	}
+}
+
+void	bres_select(t_data *data, t_coordinates old, t_coordinates new)
+{
+	if (abs((int)new.x - (int)old.x) > abs((int)new.y - (int)old.y))
+		col_lines(data, old, new);
+	else
+		row_lines(data, old, new);
+}

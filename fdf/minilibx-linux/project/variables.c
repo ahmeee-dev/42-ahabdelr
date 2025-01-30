@@ -7,9 +7,9 @@
 void	trans_x(t_data *data, int i)
 {
 	data->news.y = data->matrix[i].y * cos(rad(data->vector->tx))
-		- (data->matrix[i].z) * sin(rad(data->vector->tx));
+		- (data->matrix[i].z + (data->matrix[i].z != 0) * data->vector->trans_z) * sin(rad(data->vector->tx));
 	data->news.z = data->matrix[i].y * sin(rad(data->vector->tx))
-		+ (data->matrix[i].z) * cos(rad(data->vector->tx));
+		+ (data->matrix[i].z + (data->matrix[i].z != 0) * data->vector->trans_z) * cos(rad(data->vector->tx));
 	data->news.x = data->matrix[i].x;
 }
 
@@ -44,4 +44,6 @@ void	rotate(t_data *data, int i)
 	trans_x(data, i);
 	trans_y(data, i);
 	trans_z(data, i);
+	data->prints.x = data->news.x * data->vector->scale + data->vector->ax;
+	data->prints.y = data->news.y * data->vector->scale + data->vector->ay;
 }

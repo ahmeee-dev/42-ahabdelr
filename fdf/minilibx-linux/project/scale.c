@@ -27,3 +27,8 @@ void	down_scale(t_data *data)
 	if (data->vector->scale >= 6)
 		data->vector->scale -= 2;
 }
+
+void	z_up_down(t_data *data, int num)
+{
+	data->vector->trans_z += num;
+}

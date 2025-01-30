@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
+
 void	my_pixel(t_data *data, t_coordinates prints, int i)
 {
 	if ((prints.x >= 0 && prints.x < WIDTH) && (prints.y >= 0
@@ -57,7 +58,7 @@ void	my_image(t_data *data)
 	int				x;
 	int				y;
 	int				i;
-	t_coordinates	prints;
+	t_coordinates	old;
 
 	y = 0;
 	while (y < data->map->map_y)
@@ -67,13 +68,13 @@ void	my_image(t_data *data)
 		{
 			i = y * data->map->map_x + x;
 			rotate(data, i);
-			prints.x = data->news.x * data->vector->scale + data->vector->ax;
-			prints.y = data->news.y * data->vector->scale + data->vector->ay;
-			my_pixel(data, prints, i);
+			my_pixel(data, data->prints, i);
 			x++;
 		}
 		y++;
 	}
+	bres_x(data);
+	bres_y(data);
 }
 
 void	render(t_data *data)
