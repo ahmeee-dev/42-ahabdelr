@@ -91,6 +91,7 @@ void	map_size(t_map *map);
 void	matrix_population(t_coordinates **matrix, t_map *map);
 void	screen_init(t_screen *screen);
 void	node_init(t_data *data, t_coordinates **matrix, t_vector *vector, t_screen *screen);
+int		fdf_free(t_data *data);
 
 
 //mouse gestion

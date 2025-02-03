@@ -49,7 +49,13 @@ void	bres_select(t_data *data, t_coordinates old, t_coordinates new)
 		row_lines(data, old, new);
 }
 
-void	ft_free(t_data *data)
+int	fdf_free(t_data *data)
 {
-	mlx_destroy_image(data->screen->mlx, data->screen->img)
+	mlx_destroy_image(data->screen->mlx, data->screen->img);
+	mlx_destroy_window(data->screen->mlx, data->screen->win);
+	mlx_destroy_display(data->screen->mlx);
+	free(data->screen->mlx);
+	free(data->matrix);
+	free(data->map->file);
+	return (0);
 }

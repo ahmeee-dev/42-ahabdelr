@@ -46,7 +46,10 @@ int	keypress(int key, t_data *data)
 	else if (key == '9')
 		z_up_down(data, -1);
 	else if (key == 65307)
-		exit(0); // ancora da dichiarare
+	{
+		exit(fdf_free(data));
+		return (0);
+	}
 	else if (key == 'r')
 		start(data);
 	render(data);

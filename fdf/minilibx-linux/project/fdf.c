@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 	mlx_hook(screen.win, 5, 0, mouse_release, &data);
 	mlx_hook(screen.win, 6, 0, mouse_move, &data);
 	mlx_loop(data.screen->mlx);
+	return (0);
 }
 
 /* Da gestire FREE:
