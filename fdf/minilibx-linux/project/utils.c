@@ -48,3 +48,8 @@ void	bres_select(t_data *data, t_coordinates old, t_coordinates new)
 	else
 		row_lines(data, old, new);
 }
+
+void	ft_free(t_data *data)
+{
+	mlx_destroy_image(data->screen->mlx, data->screen->img)
+}

@@ -73,7 +73,7 @@ void	trans_x(t_data *data, int i);
 void	trans_y(t_data *data, int i);
 void	trans_z(t_data *data, int i);
 void	rotate(t_data *data, int i);
-void	z_up_down(t_data *data, int );
+void	z_up_down(t_data *data, float num);
 void	z_restart(t_data *data);
 
 //bresenham

@@ -23,7 +23,7 @@ int	find_occurrence(char *str)
 
 	res = 0;
 	i = 0;
-	while (str[i])
+	while (str[i] != '\n')
 	{
 		if (str[i] == ' ' && i > 0 && (str[i - 1] != ' '))
 			res++;
@@ -49,9 +49,9 @@ void	map_size_xy(int fd, t_map *map)
 	{
 		if (res)
 			map->map_y++;
-		//aggiunto il fatto che la width possa non essere uguale in ogni riga, va adesso aggiunto nella matrix creation
-		if (res && find_occurrence(res) > map->map_x)
+		if (res && map->map_x == 0)
 			map->map_x = find_occurrence(res);
+		free(res);
 		res = get_next_line(fd);
 	}
 	free(res);

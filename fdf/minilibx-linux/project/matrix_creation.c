@@ -39,15 +39,15 @@ float	ft_atof(char *str, int done)
 	}
 	if (str[i] == '+' || str[i] == '-')
 		sign = 1 - 2 * (str[i++] == '-');
-	while (str[i] != ' ')
+	while (str[i] != ' ' && str[i] != '\0' && str[i] != '\n')
 	{
-		if (str[i] == '.' || f_check > 1)
-			f_check *= 10;
-		if (str[i] != '.')
+		if (str[i] == '.' || str[i] == ',')
+			f_check = 0;
+		if (str[i] != '.' && f_check != 0)
 			res = res * 10.0 + ((float)str[i] - 48.0);
 		i++;
 	}
-	return ((res * sign) / f_check);
+	return ((res * sign));
 }
 
 void	line_division(int *i, char *str, t_coordinates *matrix, t_map *map)
@@ -74,8 +74,10 @@ void	z_position(t_coordinates *matrix, t_map *map)
 	while (res != NULL)
 	{
 		line_division(&i, res, matrix, map);
+		free(res);
 		res = get_next_line(map->fd);
 	}
+	free(res);
 }
 
 void	matrix_population(t_coordinates **matrix, t_map *map)

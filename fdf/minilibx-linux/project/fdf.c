@@ -50,6 +50,7 @@ int	main(int argc, char **argv)
 		exit(0);
 	map.file = argv[1];
 	matrix = parse_map(&map, argv[1]);
+	ft_printf("%d", map.map_x);
 	screen_init(&screen);
 	node_init(&data, &matrix, &vector, &screen);
 	data.map = &map;
