@@ -52,6 +52,8 @@ int	keypress(int key, t_data *data)
 	}
 	else if (key == 'r')
 		start(data);
+	else if (key == 'p')
+		data->vector->proj = 2;
 	render(data);
 	return (0);
 }

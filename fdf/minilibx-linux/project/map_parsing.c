@@ -23,7 +23,7 @@ int	find_occurrence(char *str)
 
 	res = 0;
 	i = 0;
-	while (str[i] != '\n')
+	while (str[i] != '\n' && str[i] != '\0')
 	{
 		if (str[i] == ' ' && i > 0 && (str[i - 1] != ' '))
 			res++;
@@ -49,8 +49,12 @@ void	map_size_xy(int fd, t_map *map)
 	{
 		if (res)
 			map->map_y++;
-		if (res && map->map_x == 0)
-			map->map_x = find_occurrence(res);
+		if (ft_strlen(res) > 1 && find_occurrence(res) != map->map_x)
+		{
+			ft_printf("Errore durante la lettura della mappa: uneven map");
+			free(res);
+			exit(0);
+		}
 		free(res);
 		res = get_next_line(fd);
 	}
@@ -63,6 +67,11 @@ void	map_size(t_map *map)
 	
 	map->file = ft_strjoin(map->file, ".fdf");
 	map->fd = open(map->file, O_RDONLY);
+	if (map->fd <= 0)
+	{
+		ft_printf("Errore durante l'apertura del file: No such file or directory");
+		exit(0);
+	}
 	map_size_xy(map->fd, map);
 }
 

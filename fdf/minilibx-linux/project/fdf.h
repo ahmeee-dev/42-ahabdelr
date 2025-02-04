@@ -20,7 +20,6 @@ typedef struct	s_map
 	int	fd;
 	int	map_y;
 	int	map_x;
-	char	**map_row;
 }		t_map;
 
 typedef struct s_coordinates
@@ -29,7 +28,6 @@ typedef struct s_coordinates
 	float	y;
 	float	z;
 }		t_coordinates;
-
 
 typedef struct s_vector
 {
@@ -40,12 +38,11 @@ typedef struct s_vector
 	int	ax;
 	int	ay;
 	int	scale;
+	int	proj;
 }		t_vector;
 
 typedef struct	s_screen
 {
-	//riordina le variabili nella struct
-	int	press;
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -74,17 +71,14 @@ void	trans_y(t_data *data, int i);
 void	trans_z(t_data *data, int i);
 void	rotate(t_data *data, int i);
 void	z_up_down(t_data *data, float num);
-void	z_restart(t_data *data);
 
 //bresenham
-void    row_lines(t_data *data, t_coordinates old, t_coordinates new);
-void    col_lines(t_data *data, t_coordinates old, t_coordinates new);
-void    bres_select(t_data *data, t_coordinates old, t_coordinates new);
+void    row_lines(t_data *data, t_coordinates old, t_coordinates new, int i);
+void    col_lines(t_data *data, t_coordinates old, t_coordinates new, int i);
+void	bres_select(t_data *data, t_coordinates old, t_coordinates new, int i);
 void	bres_x(t_data *data);
 void	bres_y(t_data *data);
 void    swap(t_coordinates *old, t_coordinates *new, int let);
-void	bres_x(t_data *data);
-void	bres_y(t_data *data);
 
 //screen - map
 void	map_size(t_map *map);
@@ -93,11 +87,7 @@ void	screen_init(t_screen *screen);
 void	node_init(t_data *data, t_coordinates **matrix, t_vector *vector, t_screen *screen);
 int		fdf_free(t_data *data);
 
-
-//mouse gestion
-int	mouse_move(int x, int y, void *param);
-int	mouse(int button, int x, int y, void *param);
-int	mouse_release(int button, int x, int y, void *param);
+//key gestion
 int	keypress(int key, t_data *data);
 
 //transformations
@@ -109,8 +99,6 @@ void	z_rotation(t_data *data, int sign);
 void	up_scale(t_data *data);
 void	down_scale(t_data *data);
 
-
 //render
-void	my_image(t_data *data);
 void	render(t_data *data);
 void	start(t_data *data);

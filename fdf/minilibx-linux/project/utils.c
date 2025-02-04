@@ -41,12 +41,12 @@ void	swap(t_coordinates *old, t_coordinates *new, int let)
 	}
 }
 
-void	bres_select(t_data *data, t_coordinates old, t_coordinates new)
+void	bres_select(t_data *data, t_coordinates old, t_coordinates new, int i)
 {
 	if (abs((int)new.x - (int)old.x) > abs((int)new.y - (int)old.y))
-		col_lines(data, old, new);
+		col_lines(data, old, new, i);
 	else
-		row_lines(data, old, new);
+		row_lines(data, old, new, i);
 }
 
 int	fdf_free(t_data *data)

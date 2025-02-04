@@ -25,12 +25,13 @@ void	screen_init(t_screen *screen)
 
 void	start(t_data *data)
 {
-	data->vector->tx = 30;
-	data->vector->ty = 45;
+	data->vector->tx = 35;
+	data->vector->ty = -15;
 	data->vector->tz = 0;
 	data->vector->trans_z = 0;
-	data->vector->ay = HEIGHT / 2 - 300 - data->map->map_y / 2;
-	data->vector->ax = WIDTH / 2 - data->map->map_x / 2;
 	data->vector->scale = (HEIGHT / (data->map->map_y) + WIDTH
-			/ data->map->map_x) * 1 / 6;
+			/ data->map->map_x) * 1/4;
+	data->vector->ay = HEIGHT / 2 - (data->map->map_y / 2 * data->vector->scale);
+	data->vector->ax = WIDTH / 2 - (data->map->map_x / 2 * data->vector->scale);
+	data->vector->proj = 1;
 }

@@ -15,16 +15,6 @@
 #include "fdf.h"
 #include "minilibx-linux/mlx.h"
 
-// gestisci gli errori di malloc 
-// gestisci gli errori di allocazione che compie la minilibx
-// gestione overflows/underflows -> se arriva in of/uf manda la funzione start e ri-inizializza
-// aggiungi la possibilità di aumentare le z con la barra spaziatrice e diminuirle con il delete per fare la bonus 
-// l'idea per la bonus è quella di utilizzare funzioni per leggere il file senza doverlo malloccare
-// ---evitando tutte le parti che vanno a uccidere 
-
-//	quando si prova a immettere qualcosa nell'immagine va in segfault
-//		le z non funzionano, viene returnato solo un valore e sbagliatissimo
-
 t_coordinates	*parse_map(t_map *map, char *arg)
 {
 	t_coordinates	*matrix;
@@ -50,26 +40,14 @@ int	main(int argc, char **argv)
 		exit(0);
 	map.file = argv[1];
 	matrix = parse_map(&map, argv[1]);
-	ft_printf("%d", map.map_x);
 	screen_init(&screen);
 	node_init(&data, &matrix, &vector, &screen);
+	mlx_do_key_autorepeaton(screen.mlx);
 	data.map = &map;
 	start(&data);
 	screen.addr = mlx_get_data_addr(screen.img, &screen.bpp, &screen.size_line, &screen.endian);
 	render(&data);
 	mlx_hook(screen.win, 2, 1L << 0, keypress, &data);
-	mlx_hook(screen.win, 4, 0, mouse, &data);
-	mlx_hook(screen.win, 5, 0, mouse_release, &data);
-	mlx_hook(screen.win, 6, 0, mouse_move, &data);
 	mlx_loop(data.screen->mlx);
 	return (0);
 }
-
-/* Da gestire FREE:
-	strjoin;
-	!!!!!!!vari gnl;!!!!!!!
-	mlx pointer
-	window
-	img pointer
-	matrice
-*/

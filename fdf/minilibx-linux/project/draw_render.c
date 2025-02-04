@@ -17,6 +17,30 @@
 #include <stdio.h>
 #include <unistd.h>
 
+
+void	draw_proj(t_data *data)
+{
+	int	px;
+	int	py;
+	int	pz;
+	int	i;
+
+	i = 0;
+	while (i < data->map->map_x * data->map->map_y)
+	{
+		py = data->map->map_y - data->matrix[i].y;
+		px = (data->matrix[i].x) / py * 100;
+		pz = data->matrix[i].z / py * 100;
+		if (((px > 0 && px < WIDTH) && (pz > 0 && pz < HEIGHT)))
+		{
+			data->screen->position = (data->screen->addr + (int)pz * (data->screen->size_line) + (int)px * (data->screen->bpp / 8));
+			*(unsigned int *)(data->screen->position) = 0xFFFFFFFF; 
+		}
+		i++;
+	}
+}
+
+
 void	clear_image(t_data *data)
 {
 	int		x;
@@ -38,16 +62,16 @@ void	clear_image(t_data *data)
 	}
 }
 
-void	my_image(t_data *data)
-{
-	bres_x(data);
-	bres_y(data);
-}
-
 void	render(t_data *data)
 {
 	clear_image(data);
-	my_image(data);
-	mlx_put_image_to_window(data->screen->mlx, data->screen->win,
+	if (data->vector->proj == 1)
+	{
+		bres_x(data);
+		bres_y(data);
+	}
+	else 
+		draw_proj(data);
+		mlx_put_image_to_window(data->screen->mlx, data->screen->win,
 		data->screen->img, 0, 0);
 }

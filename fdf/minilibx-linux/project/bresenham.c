@@ -5,19 +5,27 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void    bres_put(t_data *data, float x, float y)
+void    bres_put(t_data *data, float x, float y, int i)
 {
+	unsigned int	new_color;
+
 	if ((x >= 0 && x < WIDTH) && (y >= 0
 			&& y < HEIGHT))
 	{
 		    data->screen->position = (data->screen->addr + (int)y
 		    		* (data->screen->size_line) + (int)x * (data->screen->bpp
 		    			/ 8));
-		    *(unsigned int *)(data->screen->position) = 0x0000FF;
+			if (data->matrix[i].z == 0)
+				new_color = 0xFFFFFFFF;
+			else if (data->matrix[i].z > 0)
+				new_color = 0xAA9e1212;
+			else
+				new_color = 0xAA485990;
+		    *(unsigned int *)(data->screen->position) = new_color; 
     }
 }
 
-void    col_lines(t_data *data, t_coordinates old, t_coordinates new)
+void    col_lines(t_data *data, t_coordinates old, t_coordinates new, int i)
 {
     int dx;
     int dy;
@@ -35,7 +43,7 @@ void    col_lines(t_data *data, t_coordinates old, t_coordinates new)
         p = 2 * dy - dx;
         while (old.z++ < dx + 1)
         {
-            bres_put(data, old.x + old.z, old.y);
+            bres_put(data, old.x + old.z, old.y, i);
             if (p >= 0)
             {
                 old.y += dir;
@@ -46,7 +54,7 @@ void    col_lines(t_data *data, t_coordinates old, t_coordinates new)
     }
 }
 
-void    row_lines(t_data *data, t_coordinates old, t_coordinates new)
+void    row_lines(t_data *data, t_coordinates old, t_coordinates new, int i)
 {
     int dx;
     int dy;
@@ -64,7 +72,7 @@ void    row_lines(t_data *data, t_coordinates old, t_coordinates new)
         p = 2*dx - dy;
         while (old.z++ < dy + 1)
         {
-            bres_put(data, old.x, old.y + old.z);
+            bres_put(data, old.x, old.y + old.z, i);
             if (p >= 0)
             {
                 old.x += dir;
@@ -95,7 +103,7 @@ void	bres_x(t_data *data)
 			curr = data->prints;
 			rotate(data, i - 1);
 			old = data->prints;
-			bres_select(data, old, curr);
+			bres_select(data, old, curr, i);
 			x++;
 		}
 		y++;
@@ -122,7 +130,7 @@ void	bres_y(t_data *data)
 			curr = data->prints;
 			rotate(data, i - data->map->map_x);
 			old = data->prints;
-			bres_select(data, old, curr);
+			bres_select(data, old, curr, i);
 			y++;
 		}
 		x++;
