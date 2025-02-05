@@ -3,7 +3,7 @@ NAME = fdf
 
 # Compilatore e flag
 CC = gcc
-CFLAGS = 
+CFLAGS = -Wall -Werror -Wextra
 
 # Percorsi
 MLX_DIR = minilibx-linux

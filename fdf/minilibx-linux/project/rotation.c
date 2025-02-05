@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 09:57:52 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/24 18:06:33 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:13:28 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "stdio.h"
 #include "fdf.h"
+#include "libft/libft.h"
 #include "minilibx-linux/mlx.h"
+#include "stdio.h"
 #include <math.h>
 
-float	rad(int	degrees)
+float	rad(int degrees)
 {
 	float	rad;
 

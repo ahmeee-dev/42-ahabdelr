@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 09:14:49 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/25 10:58:32 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:42:28 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "fdf.h"
-#include <unistd.h>
+#include "libft/libft.h"
 #include <stdio.h>
-
+#include <unistd.h>
 
 int	find_occurrence(char *str)
 {
@@ -34,13 +33,10 @@ int	find_occurrence(char *str)
 	return (res);
 }
 
-// da gestire i free di gnl
 void	map_size_xy(int fd, t_map *map)
 {
 	char	*res;
-	int		max;
 
-	max = 0;
 	map->map_x = 0;
 	map->map_y = 0;
 	res = get_next_line(fd);
@@ -64,14 +60,11 @@ void	map_size_xy(int fd, t_map *map)
 
 void	map_size(t_map *map)
 {
-	
-	map->file = ft_strjoin(map->file, ".fdf");
 	map->fd = open(map->file, O_RDONLY);
 	if (map->fd <= 0)
 	{
-		ft_printf("Errore durante l'apertura del file: No such file or directory");
+		ft_printf("Errore all'apertura del file: No such file or directory");
 		exit(0);
 	}
 	map_size_xy(map->fd, map);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_creation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 12:41:18 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/25 18:19:47 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:04:32 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ float	initialize(float *res, float *f_check, int *i, int *j)
 	(*j) = 0;
 	return (1.0);
 }
+
 float	ft_atof(char *str, int done)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	float	res;
 	float	f_check;
 	float	sign;
-	
+
 	sign = initialize(&res, &f_check, &i, &j);
 	while (j < done)
 	{
@@ -65,7 +66,7 @@ void	line_division(int *i, char *str, t_coordinates *matrix, t_map *map)
 
 void	z_position(t_coordinates *matrix, t_map *map)
 {
-	int	i;
+	int		i;
 	char	*res;
 
 	i = 0;
@@ -83,7 +84,6 @@ void	z_position(t_coordinates *matrix, t_map *map)
 void	matrix_population(t_coordinates **matrix, t_map *map)
 {
 	int	i;
-	
 
 	i = 0;
 	while (i < map->map_x * map->map_y)
@@ -94,4 +94,3 @@ void	matrix_population(t_coordinates **matrix, t_map *map)
 	}
 	z_position(*matrix, map);
 }
-

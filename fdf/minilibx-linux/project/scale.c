@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scale.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 10:33:35 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/24 18:31:47 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:31:07 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	up_scale(t_data *data)
 
 void	down_scale(t_data *data)
 {
-	if (data->vector->scale >= 6)
+	if (data->vector->scale >= 2 )
 		data->vector->scale -= 2;
 }
 

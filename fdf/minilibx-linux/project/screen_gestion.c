@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_gestion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:30:09 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/01/27 09:42:25 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:57:09 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "minilibx-linux/mlx.h"
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 void	screen_init(t_screen *screen)
 {
@@ -30,8 +31,18 @@ void	start(t_data *data)
 	data->vector->tz = 0;
 	data->vector->trans_z = 0;
 	data->vector->scale = (HEIGHT / (data->map->map_y) + WIDTH
-			/ data->map->map_x) * 1/4;
-	data->vector->ay = HEIGHT / 2 - (data->map->map_y / 2 * data->vector->scale);
+			/ data->map->map_x) * 1 / 4;
+	data->vector->ay = HEIGHT / 2 - (data->map->map_y / 2
+			* data->vector->scale);
 	data->vector->ax = WIDTH / 2 - (data->map->map_x / 2 * data->vector->scale);
 	data->vector->proj = 1;
+}
+
+void	random_position(t_data *data)
+{
+	data->vector->tx = rand();
+	data->vector->ty = rand();
+	data->vector->tz = rand();
+	data->vector->ay = rand() % HEIGHT;
+	data->vector->ax = rand() % WIDTH;
 }
