@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:51:23 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/10 09:08:40 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:31:13 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include <unistd.h>
 #include <stdio.h>
 
+//the debbugging session started from algorithm.c since it seems like the other functions are working well
+
 int	main(int argc, char **argv)
 {
-	int	*array1;
-	int	*array2;
 	t_container	container;
 
 	if (argc < 2)
@@ -30,10 +30,9 @@ int	main(int argc, char **argv)
 	container.index1 = argc - 1;
 	container.index2 = 0;
 	container.count = 0;
-	algo(&container);
+	move_number(&container);
 	for (int i = 0; i < container.index1; i++)
 		ft_printf("%i ", container.array1[i]);
 	ft_printf("\n\n");
-	ft_printf("%d\n", container.count);
 	return (0);
 }

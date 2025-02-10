@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:57:10 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/10 10:04:02 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:11:21 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 #include "libft/libft.h"
 #include <unistd.h>
 #include <stdio.h>
+
+typedef struct	s_move
+{
+	int	moves;
+	int	direction;
+}		t_move;
 
 //direction 1 is up, 2 is down
 typedef struct	s_container
@@ -27,11 +33,21 @@ typedef struct	s_container
 	int	index1;
 	int	index2;
 	int	count;
-	int	direction;
+	t_move	move;
 }		t_container;
 
 //algorithm
 void	algo(t_container *container);
+
+//moves count
+void	moves_exec(t_container *container);
+void	moves_check(t_container *container, int k, int m);
+void	order(t_container *container);
+void	move_number(t_container *container);
+int	moves_number_next(t_container *container);
+int	moves_number_prev(t_container *container);
+
+
 
 //array
 int	*array_creation(char **numbers, int size);

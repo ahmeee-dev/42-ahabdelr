@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:29:04 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/10 12:00:44 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:44:34 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,63 @@
 #include <stdio.h>
 #include <limits.h>
 
+void	moves_exec(t_container *container)
+{
+	int	direction;
+	int	moves;
+
+	moves = container->move.moves;
+	direction = container->move.direction;
+	if (direction %2 == 1)
+	{
+		while (moves > 1)
+		{
+			rev_rb(container);
+			moves--;
+		}
+	}
+	else
+	{
+		while (moves > 1)
+		{
+			rb(container);
+			moves--;
+		}
+	}
+	pb(container);
+}
+
+void	moves_check(t_container *container, int k, int m)
+{
+	int	m_cost;
+	int	k_cost;
+
+	if (k >= (container->index1 / 2))
+		k_cost = container->index1 - k;
+	else
+	{
+		k_cost = k + 2;
+		k = -1;
+	}
+	if (m >= (container->index1 / 2) + 1)
+		m_cost = container->index1 - m + 1;
+	else
+	{
+		m_cost = m + 2;
+		m = -1;
+	}
+	if (m_cost < k_cost)
+	{
+		container->move.moves = m_cost;
+		container->move.direction = 4 * (m < 0) + 3 * (m >= 0);
+	}
+	else
+	{
+		container->move.moves = k_cost;
+		container->move.direction = 2 * (k < 0) + 1 * (k >= 0);
+	}
+}
+//problema 1: non è in grado di sortare
 void	order(t_container *container)
 {
 	int	i;
@@ -33,6 +90,7 @@ void	order(t_container *container)
 			container->ordered[i + 1] = container->ordered[i];
 			container->ordered[i] = temp;
 			check = 1;
+			i = -1;
 		}
 		i++;
 		if (i == container->size - 1 && check == 1)
@@ -40,48 +98,17 @@ void	order(t_container *container)
 	}
 }
 
-int	moves_check(t_container *container)
+void	move_number(t_container *container)
 {
-	int	j;
-	int	k;
-	int	m;
-	int	m_cost;
-	int	k_cost;
+	int	prev;
+	int	next;
+	order(container);
+	for (int i = 0; i < container->size; i++)
+		ft_printf("%i\n", container->ordered[i]);
 
-	j = 0;
-	k = 0;
-	m = 0;
-	//aggiungi per il caso in cui non sia il primo successivo o precedente 
-	// ma il secondo o così a salire
-	while (container->array1[0] != container->ordered[j])
-		j++;
-	while (j < container->size - 1 &&  container->array2[k] != container->ordered[j + 1])
-		k++;
-	while (j > 0 &&  container->array2[k] != container->ordered[j - 1])
-		m++;
-	if (k >= (container->index2 / 2))
-	{
-		k_cost = container->index2 - k;
-		container->direction = 1;
-	}
-	else
-	{
-		k_cost = k + 2;
-		container->direction = 2;
-	}
-	if (m >= (container->index2 / 2) + 1)
-	{
-		m_cost = container->index2 - m + 1;
-		container->direction = 3;
-	}
-	else 
-	{
-		m_cost = m + 2;
-		container->direction = 4;
-	}
-}
-
-void	algo(t_container *container)
-{
-	
+	next = moves_number_next(container);
+	prev = moves_number_prev(container);
+	moves_check(container, next, prev);
+	moves_exec(container);
+	//devo ancora settare questo come un loop e testare tutto ciò che viene dopo order().
 }
