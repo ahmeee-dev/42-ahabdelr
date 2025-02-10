@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:57:10 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/06 15:02:49 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:04:02 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,21 @@
 #include <unistd.h>
 #include <stdio.h>
 
-
+//direction 1 is up, 2 is down
 typedef struct	s_container
 {
 	int	*array1;
 	int	*array2;
+	int	*ordered;
 	int	size;
 	int	index1;
 	int	index2;
+	int	count;
+	int	direction;
 }		t_container;
+
+//algorithm
+void	algo(t_container *container);
 
 //array
 int	*array_creation(char **numbers, int size);

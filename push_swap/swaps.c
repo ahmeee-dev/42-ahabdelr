@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:39:14 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/06 14:19:16 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:50:28 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	sa(t_container *container)
 		container->array1[0] = container->array1[1];
 		container->array1[1] = temp;
 	}
+	container->count++;
 }
 
 void	sb(t_container *container)
@@ -37,10 +38,12 @@ void	sb(t_container *container)
 		container->array2[0] = container->array2[1];
 		container->array2[1] = temp;
 	}
+	container->count++;
 }
 
 void	ss(t_container *container)
 {
 	sa(container);
 	sb(container);
+	container->count--;
 }

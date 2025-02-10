@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:54:17 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/06 14:55:41 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:51:28 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	pa(t_container *container)
 		container->index1 += 1;
 		get_up2(container);
 	}
-
+	container->count++;
 }
 
 void	pb(t_container *container)
@@ -38,4 +38,5 @@ void	pb(t_container *container)
 		container->index2 += 1;
 		get_up1(container);
 	}
+	container->count++;
 }
