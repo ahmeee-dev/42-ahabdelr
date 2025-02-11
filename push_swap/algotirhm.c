@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algotirhm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:29:04 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/10 19:44:34 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:46:14 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,29 +72,24 @@ void	moves_check(t_container *container, int k, int m)
 		container->move.direction = 2 * (k < 0) + 1 * (k >= 0);
 	}
 }
-//problema 1: non è in grado di sortare
+
 void	order(t_container *container)
 {
 	int	i;
 	int	temp;
-	int	check;
 
 	i = 0;
-	check = 1;
-	while (check != 0)
+	while (i < container->size - 1)
 	{
-		check = 0;
-		if (i < container->size - 1 && container->ordered[i] > container->ordered[i + 1])
+		if (container->ordered[i] > container->ordered[i + 1])
 		{
 			temp = container->ordered[i + 1];
 			container->ordered[i + 1] = container->ordered[i];
 			container->ordered[i] = temp;
-			check = 1;
-			i = -1;
-		}
-		i++;
-		if (i == container->size - 1 && check == 1)
 			i = 0;
+		}
+		else
+			i++;
 	}
 }
 
@@ -103,9 +98,7 @@ void	move_number(t_container *container)
 	int	prev;
 	int	next;
 	order(container);
-	for (int i = 0; i < container->size; i++)
-		ft_printf("%i\n", container->ordered[i]);
-
+	set_of_3(container);
 	next = moves_number_next(container);
 	prev = moves_number_prev(container);
 	moves_check(container, next, prev);

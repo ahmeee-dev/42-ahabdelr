@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:57:10 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/10 19:11:21 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/11 09:45:46 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_container
 
 //algorithm
 void	algo(t_container *container);
+void	set_of_3(t_container *container);
 
 //moves count
 void	moves_exec(t_container *container);
