@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:29:04 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/11 16:00:05 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:04:31 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <limits.h>
 
+//dubbio nella riga 25, il resto sembra andare, da testare con numeri più grandi e con più numeri in generale.
 int	m_func(t_container *container, int *m)
 {
 	int	m_cost;
@@ -46,7 +47,6 @@ int	k_func(t_container *container, int *k)
 		ft_printf("roll the next down for %d\n", k_cost);
 	}
 	else if (*k >= 0)
-	// in un caso ancora indefinito serve k + 1, nell'altro k + 2
 	{
 		k_cost = *k + 2;
 		*k = -1;
