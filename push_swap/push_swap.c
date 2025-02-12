@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:51:23 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/11 14:08:12 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/12 08:29:06 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 //the debbugging session started from algorithm.c since it seems like the other functions are working well
 
-int	*array_copy(int	*array1, int size)
+int	*array_copy(t_obj *array1, int size)
 {
 	int	i;
 	int	*res;
@@ -26,7 +26,7 @@ int	*array_copy(int	*array1, int size)
 	res = (int *)malloc(sizeof(int) * size);
 	while (i < size)
 	{
-		res[i] = array1[i];
+		res[i] = array1[i].value;
 		i++;
 	}
 	return (res);
@@ -39,17 +39,18 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	container.array1 = array_creation(argv, argc - 1);
-	container.array2 = (int *)malloc(sizeof(int) * (argc - 1));
+	container.array2 = (t_obj *)malloc(sizeof(t_obj) * (argc - 1));
 	container.ordered = array_copy(container.array1, argc - 1);
 	container.size = argc - 1;
 	container.index1 = argc - 1;
 	container.index2 = 0;
 	container.count = 0;
 	move_number(&container);
-	for (int i = 0; i < container.index1; i++)
-		ft_printf("%i ", container.array1[i]);
 	ft_printf("\n\n");
-	for (int i = 0; i < container.index2; i++)
-		ft_printf("%i ", container.array2[i]);
+	for (int i = 0; i < container.index1; i++)
+		ft_printf("%i ", container.array1[i].value);
+	ft_printf("\n\n");
+	ft_printf("Mosse richieste: %d", container.count);
+	ft_printf("\n\n");
 	return (0);
 }

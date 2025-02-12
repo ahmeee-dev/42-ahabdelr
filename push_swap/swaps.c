@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:39:14 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/07 14:50:28 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/12 08:32:42 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 void	sa(t_container *container)
 {
-	int	temp;
+	t_obj	temp;
 
-	if (container->array1[0] && container->array1[1])
+	if (container->array1[0].value && container->array1[1].value)
 	{
 		temp = container->array1[0];
 		container->array1[0] = container->array1[1];
@@ -30,9 +30,9 @@ void	sa(t_container *container)
 
 void	sb(t_container *container)
 {
-	int	temp;
+	t_obj	temp;
 
-	if (container->array2[0] && container->array2[1])
+	if (container->array2[0].value && container->array2[1].value)
 	{
 		temp = container->array2[0];
 		container->array2[0] = container->array2[1];

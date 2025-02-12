@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:29:04 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/11 16:04:31 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/12 09:22:11 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ int	m_func(t_container *container, int *m)
 	if (*m >= (container->index2 / 2) + 1 * (container->index2 % 2))
 	{
 		m_cost = container->index2 - (*m) + 1;
-		ft_printf("roll the previous down for %d\n\n", m_cost);
 	}
 	else if (*m >= 0)
 	{
 		m_cost = (*m) + 1;
 		*m = -1;
-		ft_printf("roll the previous up for %d\n\n", m_cost);
 	}
 	return (m_cost);
 }
@@ -44,13 +42,11 @@ int	k_func(t_container *container, int *k)
 	if (*k >= (container->index2 / 2))
 	{
 		k_cost = container->index2 - *k;
-		ft_printf("roll the next down for %d\n", k_cost);
 	}
 	else if (*k >= 0)
 	{
 		k_cost = *k + 2;
 		*k = -1;
-		ft_printf("roll the next up for %d\n", k_cost);
 	}
 	return (k_cost);
 }
@@ -102,8 +98,6 @@ void	moves_check(t_container *container, int k_original, int m_original)
 		container->move.moves = k_cost;
 		container->move.direction = 2 * (k < 0) + 1 * (k >= 0);
 	}
-	ft_printf("direzione = %d\n", container->move.direction);
-	ft_printf("costo = %d\n", container->move.moves);
 }
 
 void	order(t_container *container)
@@ -126,6 +120,15 @@ void	order(t_container *container)
 	}
 }
 
+void	first_last(t_container *container)
+{
+	int	size;
+	
+	size = container->size - 1;
+	if (container->array1[0].value == container->ordered[size] && container->index1 > 1)
+		ra(container);
+}
+
 void	move_number(t_container *container)
 {
 	int	prev;
@@ -133,53 +136,15 @@ void	move_number(t_container *container)
 
 	order(container);
 	set_of_3(container);
-	next = moves_number_next(container);
-	ft_printf("next = %d in index %d\n", container->array2[next], next);
-	prev = moves_number_prev(container);
-	ft_printf("prev = %d in index %d\n", container->array2[prev], prev);
-	moves_check(container, next, prev);
-	moves_exec(container);
-
-	next = moves_number_next(container);
-	ft_printf("next = %d in index %d\n", container->array2[next], next);
-	prev = moves_number_prev(container);
-	ft_printf("prev = %d in index %d\n", container->array2[prev], prev);
-	moves_check(container, next, prev);
-	moves_exec(container);
-
-	next = moves_number_next(container);
-	ft_printf("next = %d in index %d\n", container->array2[next], next);
-	prev = moves_number_prev(container);
-	ft_printf("prev = %d in index %d\n", container->array2[prev], prev);
-	moves_check(container, next, prev);
-	moves_exec(container);
-
-	next = moves_number_next(container);
-	ft_printf("next = %d in index %d\n", container->array2[next], next);
-	prev = moves_number_prev(container);
-	ft_printf("prev = %d in index %d\n", container->array2[prev], prev);
-	moves_check(container, next, prev);
-	moves_exec(container);
-
-	next = moves_number_next(container);
-	ft_printf("next = %d in index %d\n", container->array2[next], next);
-	prev = moves_number_prev(container);
-	ft_printf("prev = %d in index %d\n", container->array2[prev], prev);
-	moves_check(container, next, prev);
-	moves_exec(container);
-
-	next = moves_number_next(container);
-	ft_printf("next = %d in index %d\n", container->array2[next], next);
-	prev = moves_number_prev(container);
-	ft_printf("prev = %d in index %d\n", container->array2[prev], prev);
-	moves_check(container, next, prev);
-	moves_exec(container);
-
-	next = moves_number_next(container);
-	ft_printf("next = %d in index %d\n", container->array2[next], next);
-	prev = moves_number_prev(container);
-	ft_printf("prev = %d in index %d\n", container->array2[prev], prev);
-	moves_check(container, next, prev);
-	moves_exec(container);
+	while (container->index1 > 0)
+	{
+		first_last(container);
+		next = moves_number_next(container);
+		prev = moves_number_prev(container);
+		moves_check(container, next, prev);
+		moves_exec(container);
+	}
+	while (container->index2 > 0)
+		pa(container);
 	//devo ancora settare questo come un loop e testare tutto ciò che viene dopo order().
 }

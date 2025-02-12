@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:06:33 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/06 10:57:42 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/12 08:34:07 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int	*array_creation(char **numbers, int size)
+t_obj	*array_creation(char **numbers, int size)
 {
-	int	*array;
+	t_obj	*array;
 	int	i;
 
 	i = 0;
-	array = (int *)malloc(sizeof(int) * size);
+	array = (t_obj *)malloc(sizeof(t_obj) * size);
 	while (i < size)
 	{
-		array[i] = atoi(numbers[i + 1]);
+		array[i].value = atoi(numbers[i + 1]);
 		i++;
 	}
 	return (array);

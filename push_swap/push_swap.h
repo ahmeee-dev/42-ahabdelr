@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
+/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:57:10 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/11 09:45:46 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/02/12 15:49:07 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,34 @@ typedef struct	s_move
 	int	direction;
 }		t_move;
 
+typedef struct	s_motion
+{
+	int	b_up;
+	int	b_down;
+	int	a_up;
+	int	a_down;
+	int	move_a;
+	int	move_b;
+	int	direction;
+}		t_motion;
+
+typedef struct	s_obj
+{
+	int	cost;
+	int	move_a;
+	int	move_b;
+	int	direction;
+	int	index;
+	int	value;
+	int	b_index_next;
+	int	b_index_prev;
+}		t_obj;
+
 //direction 1 is up, 2 is down
 typedef struct	s_container
 {
-	int	*array1;
-	int	*array2;
+	t_obj	*array1;
+	t_obj	*array2;
 	int	*ordered;
 	int	size;
 	int	index1;
@@ -51,7 +74,7 @@ int	moves_number_prev(t_container *container);
 
 
 //array
-int	*array_creation(char **numbers, int size);
+t_obj	*array_creation(char **numbers, int size);
 
 //swap
 void	sa(t_container *container);

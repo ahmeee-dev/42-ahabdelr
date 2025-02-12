@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:32:59 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/07 14:50:44 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/12 08:31:45 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	ra(t_container *container)
 {
-	int	temp;
+	t_obj	temp;
 	int	i;
 
 	i = 0;
@@ -36,7 +36,7 @@ void	ra(t_container *container)
 
 void	rb(t_container *container)
 {
-	int	temp;
+	t_obj	temp;
 	int	i;
 
 	i = 0;
