@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:57:10 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/12 15:49:07 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:17:18 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,12 @@
 #include <unistd.h>
 #include <stdio.h>
 
-typedef struct	s_move
-{
-	int	moves;
-	int	direction;
-}		t_move;
-
-typedef struct	s_motion
-{
-	int	b_up;
-	int	b_down;
-	int	a_up;
-	int	a_down;
-	int	move_a;
-	int	move_b;
-	int	direction;
-}		t_motion;
-
 typedef struct	s_obj
 {
-	int	cost;
-	int	move_a;
-	int	move_b;
-	int	direction;
+	int	sort;
 	int	index;
 	int	value;
-	int	b_index_next;
-	int	b_index_prev;
+	int	pos;
 }		t_obj;
 
 //direction 1 is up, 2 is down
@@ -56,22 +35,11 @@ typedef struct	s_container
 	int	index1;
 	int	index2;
 	int	count;
-	t_move	move;
 }		t_container;
 
 //algorithm
-void	algo(t_container *container);
-void	set_of_3(t_container *container);
 
-//moves count
-void	moves_exec(t_container *container);
-void	moves_check(t_container *container, int k, int m);
-void	order(t_container *container);
-void	move_number(t_container *container);
-int	moves_number_next(t_container *container);
-int	moves_number_prev(t_container *container);
-
-
+int	*oder_array(t_container *container);
 
 //array
 t_obj	*array_creation(char **numbers, int size);

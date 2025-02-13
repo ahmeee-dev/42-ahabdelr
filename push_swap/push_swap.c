@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:51:23 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/12 08:29:06 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:47:31 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,11 @@ int	main(int argc, char **argv)
 		return (0);
 	container.array1 = array_creation(argv, argc - 1);
 	container.array2 = (t_obj *)malloc(sizeof(t_obj) * (argc - 1));
-	container.ordered = array_copy(container.array1, argc - 1);
 	container.size = argc - 1;
 	container.index1 = argc - 1;
 	container.index2 = 0;
+	container.ordered = oder_array(&container);
 	container.count = 0;
-	move_number(&container);
 	ft_printf("\n\n");
 	for (int i = 0; i < container.index1; i++)
 		ft_printf("%i ", container.array1[i].value);

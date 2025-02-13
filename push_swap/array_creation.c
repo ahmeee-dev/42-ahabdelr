@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:06:33 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/12 08:34:07 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:59:02 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_obj	*array_creation(char **numbers, int size)
 	while (i < size)
 	{
 		array[i].value = atoi(numbers[i + 1]);
+		array[i].pos = 1;
 		i++;
 	}
 	return (array);
