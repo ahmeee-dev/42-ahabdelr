@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:35:26 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/12 08:31:19 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:09:13 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	rev_ra(t_container *container)
 {
 	int	i;
-	t_obj	temp;
+	int	temp;
 
 	i = container->index1 - 1;
 	if (i > 0)
@@ -30,6 +30,7 @@ void	rev_ra(t_container *container)
 			i--;
 		}
 		container->array1[0] = temp;
+		ft_printf("rra\n");
 	}
 	container->count++;
 }
@@ -37,7 +38,7 @@ void	rev_ra(t_container *container)
 void	rev_rb(t_container *container)
 {
 	int	i;
-	t_obj	temp;
+	int	temp;
 
 	i = container->index2 - 1;
 	if (i > 0)
@@ -49,6 +50,7 @@ void	rev_rb(t_container *container)
 			i--;
 		}
 		container->array2[0] = temp;
+		ft_printf("rrb\n");
 	}
 	container->count++;
 }
@@ -57,5 +59,6 @@ void	rev_rr(t_container *container)
 {
 	rev_ra(container);
 	rev_rb(container);
+	ft_printf("rrr\n");
 	container->count--;
 }

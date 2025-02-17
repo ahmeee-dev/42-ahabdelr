@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:57:10 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/15 19:58:18 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:16:06 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,33 @@
 #include <unistd.h>
 #include <stdio.h>
 
-typedef struct	s_obj
-{
-	int	sort;
-	int	index;
-	int	value;
-	int	pos;
-	int	height;
-}		t_obj;
-
 //direction 1 is up, 2 is down
 typedef struct	s_container
 {
-	t_obj	*array1;
-	t_obj	*array2;
-	int	*ordered;
-	int	size;
+	int	*array1;
+	int	*array2;
 	int	index1;
 	int	index2;
 	int	count;
 }		t_container;
 
+//base cases
+int	base_case_a(t_container *s, int size);
+int	base_case_b(t_container *s, int size);
+int	get_middle(int *array, int size);
+int	quick_sort_b(t_container *container, int size);
+
 //algorithm
-void	recursive_sort(t_container *container, int ab_min, int max);
-int	*oder_array(t_container *container);
-void	move_to_top(t_container *container, int min, int max);
-void	base_case(t_container *container, int min, int max);
-void	sort_three_top_a(t_container *container, int min, int max);
-void	sort_three_bottom_a(t_container *container, int min, int max);
-void	sort_three_bottom_b(t_container *container, int min, int max);
-void	sort_three_top_b(t_container *container, int min, int max);
-
-
-void	move_from_bottom_b(t_container *container, int size);
-void	move_from_top_b(t_container *container, int size);
-void	move_from_bottom_a(t_container *container, int size);
-void	move_from_top_a(t_container *container, int size);
+int	already_sorted(t_container *container, int size, int type);
+void	fast_sort_a(t_container *container);
+void	fast_sort_a(t_container *n);
+int	quick_sort_a(t_container *container, int size);
 
 
 //array
-t_obj	*array_creation(char **numbers, int size);
+int	*array_creation(char **numbers, int size);
+int	push_swap_atoi(char *str, int *array);
+void	repeat_check(int *array, int size);
 
 //swap
 void	sa(t_container *container);

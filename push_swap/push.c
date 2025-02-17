@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:54:17 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/13 16:00:14 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:08:02 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	pa(t_container *container)
 	{
 		get_low1(container);
 		container->array1[0] = container->array2[0];
-		container->array1[0].pos = 1;
 		container->index2 -= 1;
 		container->index1 += 1;
 		get_up2(container);
+		ft_printf("pa\n");
 	}
 	container->count++;
 }
@@ -35,10 +35,10 @@ void	pb(t_container *container)
 	{
 		get_low2(container);
 		container->array2[0] = container->array1[0];
-		container->array1[0].pos = 2;
 		container->index1 -= 1;
 		container->index2 += 1;
 		get_up1(container);
+		ft_printf("pb\n");
 	}
 	container->count++;
 }
