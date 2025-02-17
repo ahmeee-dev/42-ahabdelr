@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:51:23 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/13 14:47:31 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/15 20:01:32 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ int	main(int argc, char **argv)
 	container.index2 = 0;
 	container.ordered = oder_array(&container);
 	container.count = 0;
+	recursive_sort(&container, 0, container.index1 - 1);
 	ft_printf("\n\n");
 	for (int i = 0; i < container.index1; i++)
-		ft_printf("%i ", container.array1[i].value);
+		ft_printf("%d -", container.array1[i].value);
 	ft_printf("\n\n");
 	ft_printf("Mosse richieste: %d", container.count);
 	ft_printf("\n\n");

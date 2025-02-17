@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 14:18:22 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/12 08:33:40 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:17:28 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	get_low1(t_container *container)
 	i = container->index1;
 	while (i > 0)
 	{
-		container->array1[i].value = container->array1[i - 1].value;
+		container->array1[i] = container->array1[i - 1];
 		i--;
 	}
 }
@@ -34,7 +34,7 @@ void	get_low2(t_container *container)
 	i = container->index2;
 	while (i > 0)
 	{
-		container->array2[i].value = container->array2[i - 1].value;
+		container->array2[i] = container->array2[i - 1];
 		i--;
 	}
 }
@@ -46,7 +46,7 @@ void	get_up1(t_container *container)
 	i = 0;
 	while (i < container->index1)
 	{
-		container->array1[i].value = container->array1[i + 1].value;
+		container->array1[i] = container->array1[i + 1];
 		i++;
 	}
 }
@@ -58,7 +58,7 @@ void	get_up2(t_container *container)
 	i = 0;
 	while (i < container->index2)
 	{
-		container->array2[i].value = container->array2[i + 1].value;
+		container->array2[i] = container->array2[i + 1];
 		i++;
 	}
 }

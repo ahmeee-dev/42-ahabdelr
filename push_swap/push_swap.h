@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:57:10 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/13 16:17:18 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/15 19:58:18 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_obj
 	int	index;
 	int	value;
 	int	pos;
+	int	height;
 }		t_obj;
 
 //direction 1 is up, 2 is down
@@ -38,8 +39,21 @@ typedef struct	s_container
 }		t_container;
 
 //algorithm
-
+void	recursive_sort(t_container *container, int ab_min, int max);
 int	*oder_array(t_container *container);
+void	move_to_top(t_container *container, int min, int max);
+void	base_case(t_container *container, int min, int max);
+void	sort_three_top_a(t_container *container, int min, int max);
+void	sort_three_bottom_a(t_container *container, int min, int max);
+void	sort_three_bottom_b(t_container *container, int min, int max);
+void	sort_three_top_b(t_container *container, int min, int max);
+
+
+void	move_from_bottom_b(t_container *container, int size);
+void	move_from_top_b(t_container *container, int size);
+void	move_from_bottom_a(t_container *container, int size);
+void	move_from_top_a(t_container *container, int size);
+
 
 //array
 t_obj	*array_creation(char **numbers, int size);
