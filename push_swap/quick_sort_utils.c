@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:39:51 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/17 16:38:04 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:40:39 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
 
 void	fast_sort_a(t_container *n)
 {
@@ -49,7 +49,7 @@ int	already_sorted(t_container *container, int size, int type)
 	i = 1;
 	while (i < size)
 	{
-		if (container->array1[i - 1] > container->array1[i] && type == 1) 
+		if (container->array1[i - 1] > container->array1[i] && type == 1)
 			return (0);
 		else if (container->array2[i - 1] < container->array2[i] && type == 2)
 			return (0);
@@ -58,12 +58,11 @@ int	already_sorted(t_container *container, int size, int type)
 	return (1);
 }
 
-int	get_middle(int *array, int size)
+void	get_middle(int *array, int size, int *pivot)
 {
 	int	i;
 	int	*ordered;
 	int	temp;
-	int	pivot;
 
 	i = 0;
 	ordered = (int *)malloc(sizeof(int) * size);
@@ -84,7 +83,6 @@ int	get_middle(int *array, int size)
 		}
 		i++;
 	}
-	pivot = ordered[size / 2];
+	*pivot = ordered[size / 2];
 	free(ordered);
-	return (pivot);
 }

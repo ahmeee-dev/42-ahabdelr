@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   base_case.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:31:12 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/17 16:33:51 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:22:07 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int	base_case_b(t_container *s, int size)
 {
@@ -27,11 +27,13 @@ int	base_case_b(t_container *s, int size)
 	}
 	else if (size == 3)
 	{
-		while (size || !(s->array1[0] < s->array1[1] && s->array1[1] < s->array1[2]))
+		while (size || !(s->array1[0] < s->array1[1]
+				&& s->array1[1] < s->array1[2]))
 		{
 			if (size == 1 && s->array1[0] > s->array1[1])
 				sa(s);
-			else if ((size == 1 || (size >= 2 && s->array2[0] > s->array2[1]) || (size == 3 && s->array2[0] >  s->array2[2])) && size--)
+			else if ((size == 1 || (size >= 2 && s->array2[0] > s->array2[1])
+					|| (size == 3 && s->array2[0] > s->array2[2])) && size--)
 				pa(s);
 			else
 				sb(s);
@@ -42,11 +44,13 @@ int	base_case_b(t_container *s, int size)
 
 void	sort_three_a(t_container *s, int size)
 {
-	while (size != 3 || !(s->array1[0] < s->array1[1] && s->array1[1] < s->array1[2]))
+	while (size != 3 || !(s->array1[0] < s->array1[1]
+			&& s->array1[1] < s->array1[2]))
 	{
-		if (size == 3 && s->array1[0] > s->array1[1] && s->array1[2])
+		if (size == 3 && s->array1[0] > s->array1[1])
 			sa(s);
-		else if (size == 3 && !(s->array1[2] > s->array1[0] && s->array1[2] > s->array1[1]) && size--)
+		else if (size == 3 && !(s->array1[2] > s->array1[0]
+				&& s->array1[2] > s->array1[1]) && size--)
 			pb(s);
 		else if (s->array1[0] > s->array1[1])
 			sa(s);

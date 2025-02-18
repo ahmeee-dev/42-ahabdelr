@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swaps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:39:14 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/17 17:08:25 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:28:38 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sa(t_container *container)
 {
 	int	temp;
 
-	if (container->array1[0] && container->array1[1])
+	if (container->index1 > 0)
 	{
 		temp = container->array1[0];
 		container->array1[0] = container->array1[1];
@@ -33,7 +33,7 @@ void	sb(t_container *container)
 {
 	int	temp;
 
-	if (container->array2[0] && container->array2[1])
+	if (container->index2 > 0)
 	{
 		temp = container->array2[0];
 		container->array2[0] = container->array2[1];

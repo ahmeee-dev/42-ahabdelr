@@ -2,7 +2,7 @@
 NAME = push_swap
 
 # Compilatore e flag
-CC = gcc -g
+CC = gcc 
 CFLAGS = -Wall -Werror -Wextra
 
 # Directory della Libft

@@ -3,17 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:51:23 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/17 15:18:49 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:57:16 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
+
+void	no_way(t_container *cont, int argc, char **argv)
+{
+	cont->type = 1;
+	cont->array1 = array_creation(cont, argv, argc - 1);
+	cont->array2 = (int *)malloc(sizeof(int) * (argc - 1));
+	cont->index1 = argc - 1;
+}
+
+void	the_string(t_container *cont, char *argv)
+{
+	int		i;
+	int		size;
+
+	cont->type = 2;
+	i = 0;
+	size = 0;
+	cont->str = ps_split(argv, ' ');
+	while (cont->str[size] != NULL)
+		size++;
+	cont->array1 = (int *)malloc(sizeof(int) * (size));
+	while (i < size)
+	{
+		cont->array1[i] = push_swap_atoi(cont, cont->str[i], cont->array1);
+		free(cont->str[i]);
+		i++;
+	}
+	repeat_check(cont, cont->array1, size);
+	cont->array2 = (int *)malloc(sizeof(int) * (size));
+	cont->index1 = size;
+	free(cont->str);
+}
 
 int	main(int argc, char **argv)
 {
@@ -21,9 +53,12 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	container.array1 = array_creation(argv, argc - 1);
-	container.array2 = (int *)malloc(sizeof(int) * (argc - 1));
-	container.index1 = argc - 1;
+	else if (argc > 2)
+		no_way(&container, argc, argv);
+	else if (argc == 2)
+	{
+		the_string(&container, argv[1]);
+	}
 	container.index2 = 0;
 	container.count = 0;
 	if (!(already_sorted(&container, container.index1, 1)))
@@ -35,13 +70,14 @@ int	main(int argc, char **argv)
 		else
 			quick_sort_a(&container, container.index1);
 	}
-	ft_printf("\n\n");
-	for (int i = 0; i < container.index1; i++)
-		ft_printf("%d -", container.array1[i]);
-	ft_printf("\n\n");
-	for (int i = 0; i < container.index2; i++)
-		ft_printf("%d -", container.array2[i]);
-	ft_printf("Mosse richieste: %d", container.count);
-	ft_printf("\n\n");
+	free(container.array1);
+	free(container.array2);
 	return (0);
 }
+
+// ft_printf("\n\n");
+// for (int i = 0; i < container.index1; i++)
+// 	ft_printf("%d -", container.array1[i]);
+// ft_printf("\n\n");
+// ft_printf("Mosse richieste: %d", container.count);
+// ft_printf("\n\n");
