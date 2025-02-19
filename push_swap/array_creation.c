@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 10:06:33 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/18 19:01:36 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/02/19 10:29:10 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,23 @@
 #include <stdio.h>
 #include <unistd.h>
 
-
-//se ha una stringa come argomento e questa contiene una lettera non mi fa i dovuti free, 
 void	ft_error(t_container *cont, int *array, char *string)
 {
+	int	i;
+
+	i = 0;
 	(void)string;
 	free(array);
 	write(2, "Error\n", 6);
 	if (cont->type == 2)
+	{
+		while (i < cont->index1)
+		{
+			free(cont->str[i]);
+			i++;
+		}
 		free(cont->str);
+	}
 	exit(0);
 }
 

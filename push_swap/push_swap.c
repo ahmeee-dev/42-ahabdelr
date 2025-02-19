@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 09:51:23 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/18 18:57:16 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/02/19 10:15:34 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,21 @@ void	the_string(t_container *cont, char *argv)
 	cont->str = ps_split(argv, ' ');
 	while (cont->str[size] != NULL)
 		size++;
+	cont->index1 = size;
 	cont->array1 = (int *)malloc(sizeof(int) * (size));
 	while (i < size)
 	{
 		cont->array1[i] = push_swap_atoi(cont, cont->str[i], cont->array1);
-		free(cont->str[i]);
 		i++;
 	}
 	repeat_check(cont, cont->array1, size);
 	cont->array2 = (int *)malloc(sizeof(int) * (size));
-	cont->index1 = size;
+	i = 0;
+	while (i < size)
+	{
+		free(cont->str[i]);
+		i++;
+	}
 	free(cont->str);
 }
 
