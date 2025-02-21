@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:06:22 by marvin@42.f       #+#    #+#             */
-/*   Updated: 2025/02/21 15:06:48 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:20:10 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,49 +16,43 @@
 #include <unistd.h>
 #include "libft/libft.h"
 
-typedef struct	s_data
-{
-	int	c;
-	int	times;	
-}		t_data;
-
-t_data	data;
+int	g_c;
 
 void	handler(int sig, siginfo_t *info, void *context)
 {
+	static int	times = 0;
+
 	(void)context;
 	if (sig == SIGUSR1)
 		sig = 0;
 	else if (sig == SIGUSR2)
 		sig = 1;
-	data.c <<= 1;
-	data.c |= sig;
-	data.times++;
-	if (data.times % 8 == 0)
+	g_c <<= 1;
+	g_c |= sig;
+	times++;
+	if (times % 8 == 0)
 	{
-		ft_printf("%c", data.c);
-		data.times = 0;	
-		data.c = 0;
+		ft_printf("%c", g_c);
+		times = 0;
+		g_c = 0;
 	}
 	kill(info->si_pid, SIGUSR1);
 }
 
-int	main()
+int	main(void)
 {
-	struct sigaction sa;
-	
-	data.client_pid = 0;
-	data.c = 0;
-	data.times = 0;
+	struct sigaction	sa;
+
+	g_c = 0;
 	sa.sa_sigaction = handler;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_SIGINFO;
-	ft_printf("%d", getpid());
+	ft_printf("%d\n", getpid());
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
 		return (1);
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
 		return (1);
-	while(1)
-		usleep(100);
+	while (1)
+		usleep(1000);
 	return (0);
 }
