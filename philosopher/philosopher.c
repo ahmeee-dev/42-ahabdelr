@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:43:29 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/27 15:43:24 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:22:06 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <stdlib.h>
 #include "philo.h"
 
+
+//in the case where they all take the forks together no one
+// takes the first mutex and everyone takes the second mutex
 void	*routine(void *arg)
 {
 	t_philo *philo;
@@ -54,8 +57,9 @@ void	data_init(t_data *data, int argc, char **argv)
 	data->ph_number = mytoi(argv[1]);
 	// se mytoy è negativo devo returnare qualcosa per l'errore
 	data->to_die = mytoi(argv[2]);
-	data->to_sleep = mytoi(argv[3]);
-	if (argc == 5)
+	data->to_eat = mytoi(argv[3]) * 1000;
+	data->to_sleep = mytoi(argv[4]) * 1000;
+	if (argc == 6)
 		data->objective = mytoi(argv[4]);
 	else	
 		data->objective = -1;

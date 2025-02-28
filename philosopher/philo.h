@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:09:50 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/27 15:20:12 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:40:22 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct	s_eat
 
 typedef struct	s_data
 {
+	pthread_mutex_t	mutex;
+	pthread_mutex_t	check;
 	int	alive;
 	int	objective;
 	int	to_eat;
