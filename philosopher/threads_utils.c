@@ -6,7 +6,7 @@
 /*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:27:29 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/27 15:48:11 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:48:43 by ahabdelr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 void	first_meal(t_philo *philo, t_data *data)
 {
@@ -22,6 +23,7 @@ void	first_meal(t_philo *philo, t_data *data)
 	int	i;
 	int	time;
 
+	data->alive = 1;
 	gettimeofday(&tv, NULL);
 	time = ((long long)tv.tv_sec * 1000) + ((long long)tv.tv_usec / 1000);
 	i = 0;
@@ -36,9 +38,11 @@ void	create_mutexes(t_philo *philo, t_data *data)
 	int	i;
 
 	i = 0;
+	pthread_mutex_init(&data->mutex, NULL);
+	pthread_mutex_init(&data->check, NULL);
 	while (i < data->ph_number)
 	{
-		pthread_mutex_init(&philo->mutex, NULL);
+		pthread_mutex_init(&philo[i].mutex, NULL);
 		philo[i].data = data;
 		philo[i].number = i + 1;
 		i++;
@@ -54,6 +58,7 @@ void	create_threads(t_philo *philo, t_data *data)
 	{
 		pthread_create(&philo[i].thread, NULL, routine, (void *)(philo + i));
 		i++;
+		usleep(1);
 	}
 }
 
