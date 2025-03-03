@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:09:50 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/03 11:33:43 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/03 16:46:32 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <fcntl.h>
+
 
 typedef struct s_eat
 {
@@ -49,23 +51,6 @@ typedef struct s_philo
 	t_data			*data;
 }					t_philo;
 
-int					philo_check(t_data *data);
-void				*routine(void *arg);
-void				philosopher(t_data *data);
-void				data_init(t_data *data, int argc, char **argv);
-void				first_meal(t_philo *philo, t_data *data);
-void				create_mutexes(t_philo *philo, t_data *data);
-void				create_threads(t_philo *philo, t_data *data);
-void				apocalipse(t_philo *philo, t_data *data);
-void				eat_init(t_philo *philo, t_eat *eat);
-int					check_death(t_philo *philo);
-void				do_sleep(t_philo *philo);
-int					eat(t_philo *philo);
-void				print_death(t_philo *philo);
-void				print_eat(t_philo *philo);
-void				print_sleep(t_philo *philo);
-void				print_think(t_philo *philo);
-void				print_fork(t_philo *philo);
 int					mytoi(char *str);
 
 #endif
