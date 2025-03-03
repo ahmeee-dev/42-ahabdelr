@@ -3,25 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   threads_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabdelr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:27:29 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/02/28 21:48:43 by ahabdelr         ###   ########.fr       */
+/*   Updated: 2025/03/03 14:11:08 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <pthread.h>
-#include <stdio.h>
-#include <sys/time.h>
-#include <unistd.h>
-#include <stdlib.h>
 
 void	first_meal(t_philo *philo, t_data *data)
 {
-	struct timeval tv;
-	int	i;
-	int	time;
+	struct timeval	tv;
+	int				i;
+	int				time;
 
 	data->alive = 1;
 	gettimeofday(&tv, NULL);
@@ -33,6 +28,7 @@ void	first_meal(t_philo *philo, t_data *data)
 		i++;
 	}
 }
+
 void	create_mutexes(t_philo *philo, t_data *data)
 {
 	int	i;
@@ -78,4 +74,5 @@ void	apocalipse(t_philo *philo, t_data *data)
 		pthread_mutex_destroy(&((philo + i)->mutex));
 		i++;
 	}
+		pthread_mutex_destroy(&((philo)->mutex));
 }

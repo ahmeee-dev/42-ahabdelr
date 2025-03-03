@@ -1,5 +1,5 @@
 ## Nome dell'eseguibile
-NAME = philo_program
+NAME = philo_bonus
 
 # Compilatore e flags
 CC = gcc
