@@ -6,27 +6,45 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:27:29 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/03 16:59:11 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/04 11:58:13 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
+void	closure(t_data *data)
+{
+	sem_close(data->check);
+	sem_close(data->print);
+	sem_unlink("/sem");
+	sem_unlink("/print");
+}
+
 void	process_creation(t_data *data)
 {
-	pid_t	parent_pid;
 	pid_t	pid;
-	sem_t	*sem;
-	int	i;
+	int		i;
 
 	i = 0;
-	parent_pid = getpid();
-	sem = sem_open("/sem", O_CREAT | O_RDWR, 0666, data->ph_number);
+	sem_unlink("/sem");
+	sem_unlink("/print");
+	data->check = sem_open("/sem", O_CREAT | O_RDWR, 0666, data->ph_number);
+	data->print = sem_open("/print", O_CREAT | O_RDWR, 0666, 1);
 	while (i < data->ph_number)
 	{
 		pid = fork();
-		routine(i, data);
+		if (pid == 0)
+		{
+			routine(i, data);
+			sem_close(data->check);
+			sem_close(data->print);
+			exit(0);
+		}
 		i++;
+		usleep(1);
 	}
-	//adesso aggiungo la pparte che aspetta finisca e che poi cancelli tutto
+	i = 0;
+	while (i++ < data->ph_number)
+		waitpid(-1, NULL, 0);
+	closure(data);
 }

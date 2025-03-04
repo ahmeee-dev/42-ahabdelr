@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:27:29 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/03 15:57:58 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/04 11:48:46 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	create_mutexes(t_philo *philo, t_data *data)
 
 	i = 0;
 	pthread_mutex_init(&data->mutex, NULL);
-	pthread_mutex_init(&data->check, NULL);
 	while (i < data->ph_number)
 	{
 		pthread_mutex_init(&philo[i].mutex, NULL);
@@ -74,5 +73,5 @@ void	apocalipse(t_philo *philo, t_data *data)
 		pthread_mutex_destroy(&((philo + i)->mutex));
 		i++;
 	}
-		pthread_mutex_destroy(&((philo)->mutex));
+	pthread_mutex_destroy(&((philo)->mutex));
 }
