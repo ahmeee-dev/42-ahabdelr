@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:19:13 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/04 08:44:22 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/04 13:48:29 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ int	eat(t_philo *philo)
 	t_eat	eat;
 
 	eat_init(philo, &eat);
+	// pthread_mutex_lock(&((philo)->data->check));
 	pthread_mutex_lock(&((philo)->mutex));
 	print_fork(philo);
 	pthread_mutex_lock(&((philo + eat.next)->mutex));
 	print_fork(philo);
+	// pthread_mutex_unlock(&((philo)->data->check));
 	if (!check_death(philo))
 	{
 		print_eat(philo);

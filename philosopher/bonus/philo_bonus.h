@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:09:50 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/04 10:32:14 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/04 13:41:07 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_data
 {
 	sem_t	*print;
 	sem_t	*check;
+	sem_t	*order;
 	int		alive;
 	int		objective;
 	int		to_eat;

@@ -4,16 +4,16 @@ all: mandatory
 
 mandatory:
 	$(MAKE) -C mandatory
-	mv mandatory/philo .
 
 bonus:
 	$(MAKE) -C bonus
-	mv bonus/philo_bonus .
 
 clean:
 	$(MAKE) -C mandatory clean
 	$(MAKE) -C bonus clean
-	rm -f mandatory_executable philo_bonus
 
 fclean: clean
+	$(MAKE) -C mandatory fclean
+	$(MAKE) -C bonus fclean
 	rm -f philo philo_bonus
+
