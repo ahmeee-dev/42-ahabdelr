@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
-EXEC = philo
+EXEC = philo_bonus
 
 all: $(EXEC)
 
