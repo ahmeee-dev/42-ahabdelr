@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:27:29 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/04 14:06:43 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/05 09:51:24 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	create_threads(t_philo *philo, t_data *data)
 	while (i < data->ph_number)
 	{
 		pthread_create(&philo[i].thread, NULL, routine, (void *)(philo + i));
-		i++;
 		usleep(10);
+		i++;
 	}
 }
 
