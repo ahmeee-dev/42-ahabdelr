@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:19:13 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/04 13:48:22 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/05 11:05:30 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	eat(int i, t_data *data, int *last_meal)
 	sem_wait(data->check);
 	print_fork(i, data);
 	sem_post(data->order);
-	check_deat(i, data, last_meal);
 	print_eat(i, data, last_meal);
 	usleep(data->to_eat);
 	sem_post(data->check);
@@ -46,6 +45,8 @@ void	routine(int i, t_data *data)
 	times = 0;
 	while (times != data->objective && data->alive == 1)
 	{
+		if (i == data->ph_number)
+			i = 0;
 		eat(i, data, &time);
 		do_sleep(i, data);
 		i++;

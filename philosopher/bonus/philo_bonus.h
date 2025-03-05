@@ -6,13 +6,14 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:09:50 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/04 13:41:07 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/05 10:51:41 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_BONUS_H
 # define PHILO_BONUS_H
 
+# include <string.h>
 # include <fcntl.h>
 # include <pthread.h>
 # include <semaphore.h>

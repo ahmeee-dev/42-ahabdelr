@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:19:13 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/05 09:57:49 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/05 10:09:53 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	supply_chain(t_eat eat, t_philo *philo)
 {
 	if (philo->number % 2)
 	{
-		pthread_mutex_lock(&((philo  + eat.next)->mutex));
+		pthread_mutex_lock(&((philo + eat.next)->mutex));
 		print_fork(philo);
 		pthread_mutex_lock(&((philo)->mutex));
 		print_fork(philo);

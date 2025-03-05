@@ -6,7 +6,7 @@
 /*   By: marvin@42.fr <ahabdelr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 09:59:20 by ahabdelr          #+#    #+#             */
-/*   Updated: 2025/03/04 10:32:39 by marvin@42.f      ###   ########.fr       */
+/*   Updated: 2025/03/05 10:52:24 by marvin@42.f      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_death(int i, t_data *data)
 		printf("%lld %d died\n", (((long long)tv.tv_sec * 1000)
 				+ ((long long)tv.tv_usec / 1000)), i);
 	}
-	data->alive = 0;
+	memset(&data->alive, 0, sizeof(int));
 	sem_post(data->print);
 }
 
