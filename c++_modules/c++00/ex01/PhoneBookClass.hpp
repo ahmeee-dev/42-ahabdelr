@@ -11,6 +11,7 @@ public:
 	void	addContact(int done);
 	void	displayFunction(int done);
 	void	showIstance(std::string index);
+	void	helpFunction();
 };
 
 #endif

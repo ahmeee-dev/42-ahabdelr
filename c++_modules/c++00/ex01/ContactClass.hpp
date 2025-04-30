@@ -18,6 +18,12 @@ public:
 	void	setDarkestSecret();
 	void	displayContacts(int index);
 	void	displayIstance();
+
+	void	randFirstName();
+	void	randLastName();
+	void	randNickName();
+	void	randPhoneNumber();
+	void	randDarkestSecret();
 };
 
 
