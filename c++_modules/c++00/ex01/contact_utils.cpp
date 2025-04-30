@@ -13,7 +13,7 @@ std::string fixLenght(std::string str)
 	}
 	else if (size < 10)
 	{
-		for (int i = 0; i < 10 - size + i; i++)
+		for (int i = 0; size + i < 10; i++)
 			str.insert(0, " ");
 	}
 	return (str);
@@ -21,7 +21,7 @@ std::string fixLenght(std::string str)
 
 void	ContactClass::displayContacts(int index){
 	std::cout << "|";
-	std::cout << (index + 1 + '0');
+	std::cout << "         " << (index + 1);
 	std::cout << "|";
 	std::cout << fixLenght(firstName);
 	std::cout << "|";
@@ -29,6 +29,7 @@ void	ContactClass::displayContacts(int index){
 	std::cout << "|";
 	std::cout << fixLenght(nickName);
 	std::cout << "|";
+	std::cout << std::endl;
 }
 
 void	ContactClass::displayIstance(){
