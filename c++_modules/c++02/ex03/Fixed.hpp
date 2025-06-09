@@ -1,3 +1,6 @@
+#ifndef FIXED_HPP
+# define FIXED_HPP
+
 #include <iostream>
 #include <string.h>
 #include <cmath>
@@ -46,3 +49,5 @@ class Fixed {
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& f);
+
+#endif
