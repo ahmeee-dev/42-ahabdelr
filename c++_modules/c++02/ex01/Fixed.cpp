@@ -12,7 +12,7 @@ Fixed::Fixed(int const integer) {
 
 Fixed::Fixed(float const floating) {
 	std::cout << "Float constructor called" << std::endl;
-	this->integer = (floating) * (1 << Fixed::fract);
+	this->integer = static_cast<int>(roundf((floating) * (1 << Fixed::fract)));
 }
 
 Fixed::Fixed(const Fixed &original) {
