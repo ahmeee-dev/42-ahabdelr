@@ -2,7 +2,7 @@
 
 int main() {
 	ScravTrap luca("Luca");
-	luca.attack();
+	luca.attack("Exio");
 	luca.takeDamage(10);
 	luca.guardGate();
 }

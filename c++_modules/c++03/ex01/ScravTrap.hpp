@@ -8,5 +8,5 @@ class ScravTrap : public ClapTrap {
 		~ScravTrap();
 		ScravTrap &operator =(ScravTrap &rhs);
 		void guardGate();
-		void attack();
+		void attack(const std::string &target);
 };
