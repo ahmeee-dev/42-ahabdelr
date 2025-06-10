@@ -1,7 +1,7 @@
 #include "ScravTrap.hpp"
 
-void ScravTrap::attack() {
-	std::cout << "The earth is shaking, an attack of " << this->attackDamage << " damage has been thrown by " << this->name << std::endl;
+void ScravTrap::attack(const std::string &target) {
+	std::cout << "The earth is shaking, an attack to " << target << ", such a powerful attack (" << this->attackDamage << ")has been thrown by " << this->name << std::endl;
 }
 
 ScravTrap::ScravTrap() : ClapTrap() {
