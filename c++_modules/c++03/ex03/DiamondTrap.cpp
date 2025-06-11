@@ -11,7 +11,7 @@ DiamondTrap::~DiamondTrap() {
 	std::cout << this->name << ", Diamond warrior, has fallen under magical circumstances" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap &toCopy) : ClapTrap(static_cast<ClapTrap &>(toCopy))
+DiamondTrap::DiamondTrap(DiamondTrap &toCopy) : ClapTrap(toCopy)
  {
 	this->name = toCopy.name;
 	this->hitPoints = toCopy.hitPoints;
