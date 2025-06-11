@@ -6,6 +6,7 @@ int main(void) {
 	Cat yugi;
 	Dog astro;
 	WrongCat milo;
+	Animal cuozzo;
 	
 	yugi.makeSound();
 	astro.makeSound();
@@ -13,4 +14,5 @@ int main(void) {
 	yugi.getType();
 	astro.getType();
 	milo.getType();
+	cuozzo.getType();
 }
