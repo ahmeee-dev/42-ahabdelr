@@ -19,8 +19,15 @@ AMateria::AMateria(AMateria &toCopy) {
 	this->type = toCopy.type;
 }
 
+AMateria &AMateria::operator=(AMateria const &rhs) {
+	return *this;
+}
+
 std::string const &AMateria::getType() const {
 	return (this->type);
 }
 
-//use is still to implement
+
+void AMateria::use(ICharacter &target) {
+	(void)target;
+}
