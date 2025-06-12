@@ -5,7 +5,6 @@
 class Cure : virtual public AMateria {
 	public:
 		Cure();
-		Cure(std::string const & type);
 		~Cure();
 		Cure &operator=(Cure const &rhs);
 		Cure(Cure &toCopy);

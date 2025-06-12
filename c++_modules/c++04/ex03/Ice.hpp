@@ -5,7 +5,6 @@
 class Ice : virtual public AMateria {
 	public:
 		Ice();
-		Ice(std::string const & type);
 		~Ice();
 		Ice &operator=(Ice const &rhs);
 		Ice(Ice &toCopy);
