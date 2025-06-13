@@ -28,11 +28,37 @@ Character &Character::operator=(Character const &rhs) {
 	return (*this);
 }
 
+std::string const & Character::getName() const {
+	return (this->name);
+}
+
+void Character::equip(AMateria* m) {
+	for (int i = 0; i < 4; i++){
+		if (this->inventory[i] == NULL){
+			this->inventory[i] = m;
+			break;
+		}
+	}
+}
+
+void Character::unequip(int idx) {
+	if (idx < 0 || idx > 3)
+		return ;
+	if (this->inventory[idx] != NULL){
+		this->dropped[this->droppedCount] = this->inventory[idx];
+		this->droppedCount++;
+		this->inventory[idx] = NULL;
+	}
+}
+
+void Character::use(int idx, ICharacter& target) {
+	if (idx < 0 || idx > 3)
+		return ;
+	if (this->inventory[idx] != NULL)
+		this->inventory[idx]->use(target);
+}
 /*
 	Ancora da inserire
 	
-		std::string const & getName() const;
-		void equip(AMateria* m);
-		void unequip(int idx);
 		void use(int idx, ICharacter& target);
 */
