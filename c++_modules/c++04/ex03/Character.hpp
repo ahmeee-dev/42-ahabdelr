@@ -4,6 +4,8 @@ class Character : virtual public ICharacter {
 	private:
 		std::string name;
 		AMateria *inventory[4];
+		AMateria *dropped[10000];
+		int droppedCount = 0;
 	public:
 		Character();
 		~Character();
