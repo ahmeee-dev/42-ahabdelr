@@ -1,6 +1,6 @@
 COMPILATOR	= c++
 FLAGS		= -std=c++98 -Wall -Wextra -Werror
-EXECUTABLE	= Unnecessary_violence
+EXECUTABLE	= Harl_2.0
 SRC			= $(wildcard *.cpp)
 OBJ			= $(SRC:.cpp=.o)
 

@@ -7,7 +7,7 @@
 
 class Fixed {
 	private:
-		int integer = 0;
+		int integer;
 		static const int fract = 8;
 
 	public:

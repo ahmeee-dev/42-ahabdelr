@@ -6,9 +6,12 @@ Animal::Animal() {
 
 Animal::~Animal() {};
 
-Animal::Animal(Animal &toCopy) {};
 
 Animal &Animal::operator=(Animal &rhs) {
+	std::cout << "Animal copy assignment operator called" << std::endl;
+	if (this != &rhs) {
+		type = rhs.type;
+	}
 	return (*this);
 };
 

@@ -1,23 +1,22 @@
-NAME        = BraiiiiiiinnnzzzZ
-CXX            = c++
-CXX_FLAGS    = -Wall -Wextra -Werror
+COMPILATOR	= c++
+FLAGS		= -std=c++98 -Wall -Wextra -Werror
+EXECUTABLE	= Moar_brainz!
+SRC			= $(wildcard *.cpp)
+OBJ			= $(SRC:.cpp=.o)
 
-CXX_FILES    = main.cpp Zombie.cpp zombieHorde.cpp setName.cpp
-OBJS        = $(CXX_FILES:.cpp=.o)
+all: $(EXECUTABLE)
 
-all: $(NAME)
+$(EXECUTABLE): $(OBJ)
+	$(COMPILATOR) $(FLAGS) $(OBJ) -o $(EXECUTABLE)
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXX_FLAGS) $^ -o $@
-
-%.o: %.cpp Zombie.hpp
-	$(CXX) $(CXX_FLAGS) -c $< -o $@
+%.o: %.cpp
+	$(COMPILATOR) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(EXECUTABLE)
 
 re: fclean all
 
