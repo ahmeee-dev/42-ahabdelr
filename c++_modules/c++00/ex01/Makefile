@@ -1,6 +1,6 @@
 COMPILATOR = c++
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-EXECUTABLE = phoneBook
+EXECUTABLE = bank
 FILES = *.cpp
 
 all: 
