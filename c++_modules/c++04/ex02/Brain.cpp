@@ -11,7 +11,6 @@ Brain::~Brain() {
 	std::cout << "Sì, è MORTO un CERVELLO" << std::endl;
 };
 
-Brain::Brain(Brain &toCopy) {};
 
 Brain &Brain::operator=(Brain &rhs) {
 	if (this != &rhs)

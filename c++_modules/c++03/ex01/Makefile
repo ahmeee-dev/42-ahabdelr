@@ -1,6 +1,6 @@
 COMPILATOR	= c++
 FLAGS		= -std=c++98 -Wall -Wextra -Werror
-EXECUTABLE	= Unnecessary_violence
+EXECUTABLE	= ScavTrap
 SRC			= $(wildcard *.cpp)
 OBJ			= $(SRC:.cpp=.o)
 

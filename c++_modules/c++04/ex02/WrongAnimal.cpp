@@ -2,17 +2,16 @@
 
 WrongAnimal::WrongAnimal() {
 	this->type = "Shalom";
-	std::cout << "Sì, è NATO un COSO STRANO" << std::endl;
-
 };
 
-WrongAnimal::~WrongAnimal() {
-	std::cout << "Sì, è MORTO un COSO STRANO" << std::endl;
-};
+WrongAnimal::~WrongAnimal() {};
 
-WrongAnimal::WrongAnimal(WrongAnimal &toCopy) {};
 
 WrongAnimal &WrongAnimal::operator=(WrongAnimal &rhs) {
+std::cout << "WrongAnimal copy assignment operator called" << std::endl;
+	if (this != &rhs) {
+		type = rhs.type;
+	}
 	return (*this);
 };
 

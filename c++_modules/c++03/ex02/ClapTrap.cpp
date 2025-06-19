@@ -4,14 +4,23 @@
 	void beRepaired(unsigned int amount);
 
 ClapTrap::ClapTrap(std::string name) : name(name) {
+	attackDamage = 0;
+	energyPoints = 10;
+	hitPoints = 10;
 	std::cout << "A New warrior has risen under the name of " << name << std::endl;
 }
 
 ClapTrap::ClapTrap() : name("") {
+	attackDamage = 0;
+	energyPoints = 10;
+	hitPoints = 10;
 	std::cout << "A New warrior has risen under no name" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap &toCopy) : name(toCopy.name) {
+	this->attackDamage = toCopy.attackDamage;
+	this->energyPoints = toCopy.energyPoints;
+	this->hitPoints = toCopy.hitPoints;
 	std::cout << "The Copy of a warrior has risen under the name of " << name << std::endl;
 }
 
@@ -23,6 +32,9 @@ ClapTrap& ClapTrap::operator= (ClapTrap &rhs) {
 	if (this != &rhs)
 	{
 		this->name = rhs.name;
+		this->attackDamage = rhs.attackDamage;
+		this->energyPoints = rhs.energyPoints;
+		this->hitPoints = rhs.hitPoints;
 	}
 	return (*this);
 }

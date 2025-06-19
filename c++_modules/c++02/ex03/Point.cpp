@@ -9,7 +9,8 @@ Point::Point(const Point &copyElement) : x(copyElement.x), y(copyElement.y) {}
 
 Point::~Point() {}
 
-Point &Point::operator = (const Point &rhs) {
+Point &Point::operator =(const Point &rhs) {
+	(void)rhs;
 	return (*this);
 }
 

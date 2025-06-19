@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) : FragTrap(name), ScravTrap(name), ClapTrap(name + "clap_name") {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "clap_name"), ScravTrap(name), FragTrap(name) {
 	this->name = name;
 	this->hitPoints = FragTrap::hitPoints;
 	this->energyPoints = ScravTrap::energyPoints;

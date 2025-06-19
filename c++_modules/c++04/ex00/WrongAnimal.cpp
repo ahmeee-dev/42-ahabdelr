@@ -6,9 +6,12 @@ WrongAnimal::WrongAnimal() {
 
 WrongAnimal::~WrongAnimal() {};
 
-WrongAnimal::WrongAnimal(WrongAnimal &toCopy) {};
 
 WrongAnimal &WrongAnimal::operator=(WrongAnimal &rhs) {
+std::cout << "WrongAnimal copy assignment operator called" << std::endl;
+	if (this != &rhs) {
+		type = rhs.type;
+	}
 	return (*this);
 };
 
