@@ -1,3 +1,4 @@
+#!/bin/bash
 service mariadb start;
 
 until mysqladmin ping -u root --silent; do
