@@ -1,0 +1,13 @@
+services:
+  mariadb:
+    container_name: mariadb
+    networks:
+      - inception
+    build: ./mariadb
+    image: mariadb:notlatest
+    env_file: .env
+    volumes:
+      -mariadb:/var/lib/mysql
+    restart: always
+    expose:
+      - "3306"
