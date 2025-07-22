@@ -6,16 +6,16 @@ cd /var/www/wordpress
 if [ ! -f /usr/local/bin/wp ]; then
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 	chmod +x wp-cli.phar
-	mv mp-cli.phar /usr/local/bin/wp
+	mv wp-cli.phar /usr/local/bin/wp
 fi
 
 if [ ! -f wp-config.php ]; then
 	wp core download --allow-root
 
-	mv wp-config-sample.php wp-config-php
-	sed -i "s|database_name_here|${MYSQL_USER}|" wp-config.php
+	mv wp-config-sample.php wp-config.php
+	sed -i "s|database_name_here|${MYSQL_DATABASE}|" wp-config.php
 	sed -i "s|username_here|${MYSQL_USER}|" wp-config.php
-	sed -i "s|passowrd_here|${MYSQL_PASSWORD}|" wp-config.php
+	sed -i "s|password_here|${MYSQL_PASSWORD}|" wp-config.php
 	sed -i "s|localhost|mariadb|" wp-config.php
 fi
 
@@ -23,7 +23,7 @@ echo "Waiting for database connection..."
 sleep 10
 
 if ! wp core is-installed --allow-root; then
-	if [[ "${WP_ADMIN_USER}" =~ [Aa]dmin|[Aa]dministrator ]]; then
+	if [[ "${WP_ADMIN_USER}" =~ .*[Aa]dmin.* ]]; then
 		echo "Error: Administrator username cannot contain 'Admin' or 'Adiministrator' ..."
 		exit 1
 	fi
