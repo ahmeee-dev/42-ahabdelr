@@ -84,14 +84,14 @@ volumes:
     driver_opts:
       type: none
       # da cambiare nome in "/home/ahabdelr/data/mariadb" e poi creare la cartella
-      device: /Users/ahmed/data/mariadb
+      device: /home/ahmed/data/mariadb
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
       # da cambiare nome in "/home/ahabdelr/data/wordpress" e poi creare la cartella
-      device: /Users/ahmed/data/wordpress
+      device: /home/ahmed/data/wordpress
       o: bind
 
 networks:
