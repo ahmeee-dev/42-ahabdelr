@@ -13,19 +13,19 @@ services:
       - "3306"
   
   nginx:
-  container_name: nginx
-  networks:
-    - inception
-  depends_on:
-    - wordpress
-  build: ./nginx
-  image: nginx:notlatest
-  env_file: .env
-  volumes:
-    - wordpress:/var/www/wordpress
-  restart: always
-  ports:
-   - "443:443"
+    container_name: nginx
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    build: ./nginx
+    image: nginx:notlatest
+    env_file: .env
+    volumes:
+      - wordpress:/var/www/wordpress
+    restart: always
+    ports:
+    - "443:443"
 
   wordpress:
     container_name: wordpress
@@ -50,8 +50,9 @@ services:
     network_mode: host
     pid: host
     restart: unless-stopped
+    #riporta a '/:/host:ro,rslave'
     volumes:
-      - '/:/host:ro,rslave'
+      - '/:/host:ro'
 
   prometheus:
     image: prom/prometheus:latest
@@ -60,7 +61,7 @@ services:
       - '9090:9090'
     restart: unless-stopped
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus-data:/prometheus
       # command:
       #   - '--web.enable-lifecycle'
@@ -82,14 +83,16 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/ahabdelr/data/mariadb
+      # da cambiare nome in "/home/ahabdelr/data/mariadb" e poi creare la cartella
+      device: /Users/ahmed/data/mariadb
       o: bind
-    wordpress:
-      driver: local
-      driver_opts:
-        type: none
-        device: /home/ahabdelr/data/wordpress
-        o: bind
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      # da cambiare nome in "/home/ahabdelr/data/wordpress" e poi creare la cartella
+      device: /Users/ahmed/data/wordpress
+      o: bind
 
 networks:
   inception:
