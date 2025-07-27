@@ -37,12 +37,13 @@ if ! wp core is-installed --allow-root; then
 		--skip-email \
 		--allow-root
 
-	wp user create \
-		"${WP_USER}" "${WP_USER_EMAIL}" \
-		--user_pass="${WP_USER_PASSWORD}" \
-		--role=editor \
-		--allow-root
 fi
+
+wp user create \
+	"${WP_USER}" "${WP_USER_EMAIL}" \
+	--user_pass="${WP_USER_PASSWORD}" \
+	--role=editor \
+	--allow-root
 
 if ! wp theme is-installed twentytwentyfour --allow-root; then
 	wp theme install twentytwentyfour --activate --allow-root
