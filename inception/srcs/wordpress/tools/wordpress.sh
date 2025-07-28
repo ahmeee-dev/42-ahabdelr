@@ -18,15 +18,18 @@ if [ ! -f wp-config.php ]; then
 	sed -i "s|password_here|${MYSQL_PASSWORD}|" wp-config.php
 	sed -i "s|localhost|mariadb|" wp-config.php
 
+
+fi
+
 cat << EOF >> wp-config.php
 define('WP_REDIS_HOST', 'redis');
 define('WP_REDIS_PORT', 6379);
 define('WP_CACHE', true); // Enable caching
 EOF
-fi
 
 echo "Waiting for database connection..."
 sleep 10
+
 
 if ! wp core is-installed --allow-root; then
 	if [[ "${WP_ADMIN_USER}" =~ .*[Aa]dmin.* ]]; then
@@ -44,6 +47,12 @@ if ! wp core is-installed --allow-root; then
 		--allow-root
 
 fi
+
+wp plugin install redis-cache --activate --allow-root
+echo "Waiting for redis installation..."
+sleep 5
+wp redis enable --allow-root
+
 
 wp user create \
 	"${WP_USER}" "${WP_USER_EMAIL}" \

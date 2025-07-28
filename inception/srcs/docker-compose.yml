@@ -45,17 +45,18 @@ services:
       - "9000"
 
   adminer:
-    build:
-      context: ./adminer
+    container_name: adminer
+    build: ./adminer
     ports:
       - "8080:8080"
     restart: always
     networks:
       - inception
-    depens_on:
+    depends_on:
       - mariadb
 
   redis:
+    container_name: redis
     build:
       context: ./redis
     ports:
