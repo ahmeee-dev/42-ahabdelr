@@ -35,6 +35,7 @@ services:
       - inception
     depends_on:
       - mariadb
+      - redis
     build: ./wordpress
     #image: 42-wordpress
     env_file: .env
