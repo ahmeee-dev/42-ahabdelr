@@ -44,6 +44,17 @@ services:
     expose:
       - "9000"
 
+  adminer:
+    build:
+      context: ./adminer
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - inception
+    depens_on:
+      - mariadb
+
   redis:
     build:
       context: ./redis
