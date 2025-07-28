@@ -25,6 +25,7 @@ services:
       - wordpress:/var/www/wordpress
     restart: always
     ports:
+    - "3987:3987"
     - "443:443"
     - "80:80"
 
@@ -43,6 +44,14 @@ services:
     expose:
       - "9000"
 
+  redis:
+    build:
+      context: ./redis
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - inception
   # node_exporter: 
   #   image: quay.io/prometheus/node-exporter:latest
   #   container_name: node_exporter

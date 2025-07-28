@@ -17,6 +17,12 @@ if [ ! -f wp-config.php ]; then
 	sed -i "s|username_here|${MYSQL_USER}|" wp-config.php
 	sed -i "s|password_here|${MYSQL_PASSWORD}|" wp-config.php
 	sed -i "s|localhost|mariadb|" wp-config.php
+
+cat << EOF >> wp-config.php
+define('WP_REDIS_HOST', 'redis');
+define('WP_REDIS_PORT', 6379);
+define('WP_CACHE', true); // Enable caching
+EOF
 fi
 
 echo "Waiting for database connection..."

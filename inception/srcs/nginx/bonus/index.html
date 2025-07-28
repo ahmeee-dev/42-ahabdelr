@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ahmeee-dev | GitHub Showcase</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f1117;
+      color: #f0f0f0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p.description {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #aaa;
+    }
+
+    #projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #1e212a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: #61dafb;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    a {
+      color: #61dafb;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ahmeee-dev</h1>
+  <p class="description">A showcase of GitHub projects by <strong>Ahmed</strong></p>
+
+  <section id="projects">Loading projects...</section>
+
+  <footer>
+    Built with ❤️ by Ahmed — <a href="https://github.com/ahmeee-dev" target="_blank">@ahmeee-dev</a>
+  </footer>
+
+  <script>
+    async function loadProjects() {
+      const container = document.getElementById('projects');
+      try {
+        const res = await fetch('https://api.github.com/users/ahmeee-dev/repos?sort=updated');
+        const repos = await res.json();
+
+        if (!Array.isArray(repos)) throw new Error('Invalid response');
+
+        container.innerHTML = '';
+
+        repos.forEach(repo => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+            <p>${repo.description ? repo.description : 'No description provided.'}</p>
+          `;
+          container.appendChild(card);
+        });
+
+        if (repos.length === 0) {
+          container.innerHTML = '<p>No public repositories found.</p>';
+        }
+      } catch (err) {
+        container.innerHTML = '<p>Failed to load projects. Check GitHub username or rate limits.</p>';
+        console.error(err);
+      }
+    }
+
+    loadProjects();
+  </script>
+
+</body>
+</html>
