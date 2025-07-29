@@ -40,9 +40,9 @@ std::string Bureaucrat::getName() {
 }
 
 void Bureaucrat::incrementGrade(int amount) {
-	this->grade+= amount;
+	this->grade-= amount;
 }
 
 void Bureaucrat::decrementGrade(int amount) {
-	this->grade-= amount;
+	this->grade+= amount;
 }

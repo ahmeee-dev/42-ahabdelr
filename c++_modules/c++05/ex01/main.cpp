@@ -3,21 +3,15 @@
 
 int main(void) {
 
-	Bureaucrat mario("Mario", 138);
-	Bureaucrat lario("Lario", 148);
-	Bureaucrat dario("Dario", 128);
-	Bureaucrat pario("Pario", 158);
-	
-	mario.getGrade();
-	lario.getGrade();
-	dario.getGrade();
-	pario.getGrade();
+	Bureaucrat mario("Mario Draghi", 138);
+	Form jobsAct("jobsAct", 7, 2);
 
-	mario.incrementGrade(2);
 	mario.getGrade();
-	mario.getName();
-	mario.decrementGrade(2);
+	mario.signForm(jobsAct);
+	mario.decrementGrade(134);
 	mario.getGrade();
+	mario.signForm(jobsAct);
+	std::cout << "E dopo questo Mario si ritira" << std::endl;
 
 	return (0);
 }
