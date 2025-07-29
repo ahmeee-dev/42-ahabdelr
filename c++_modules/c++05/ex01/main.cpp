@@ -6,10 +6,10 @@ int main(void) {
 	Bureaucrat mario("Mario Draghi", 138);
 	Form jobsAct("jobsAct", 7, 2);
 
-	mario.getGrade();
+	std::cout << mario.getGrade() << std::endl;
 	mario.signForm(jobsAct);
-	mario.decrementGrade(134);
-	mario.getGrade();
+	mario.incrementGrade(131);
+	std::cout << mario.getGrade() << std::endl;;
 	mario.signForm(jobsAct);
 	std::cout << "E dopo questo Mario si ritira" << std::endl;
 

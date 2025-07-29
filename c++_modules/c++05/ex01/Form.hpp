@@ -37,6 +37,12 @@ class Form {
 					return "Grade too low to sign!";
 				}
 		};
+		class GradeTooHighException: public std::exception {
+			public:
+				const char* what() const throw() {
+					return "Grade too high to sign!";
+				}
+		};
 
 };
 

@@ -6,7 +6,9 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute): name(name), g
 
 Form::~Form() {}
 
-Form::Form(Form &toCopy): name(toCopy.name), gradeToSign(toCopy.gradeToSign), gradeToExecute(toCopy.gradeToExecute) {}
+Form::Form(Form &toCopy): name(toCopy.name), gradeToSign(toCopy.gradeToSign), gradeToExecute(toCopy.gradeToExecute) {
+	this->isSigned = toCopy.getIsSigned();
+}
 
 Form& Form::operator =(const Form &rhs) {
 	if (this != &rhs)
@@ -17,7 +19,7 @@ Form& Form::operator =(const Form &rhs) {
 }
 
 std::ostream& operator<<(std::ostream&os, const Form &rhs) {
-	std::cout << rhs.getName() << ", grade to sign " << rhs.getGradeToSign() << ", grade to execute " << rhs.getGradeToExecute() << " signed: " << rhs.getIsSigned() << std::endl;
+	os << rhs.getName() << ", grade to sign " << rhs.getGradeToSign() << ", grade to execute " << rhs.getGradeToExecute() << " signed: " << rhs.getIsSigned() << std::endl;
 	return os;
 }
 
@@ -25,6 +27,8 @@ std::string Form::beSigned(Bureaucrat figure) {
 	try {
 		if (figure.getGrade() > this->gradeToSign)
 			throw (Form::GradeTooLowException());
+		else if (figure.getGrade() < 1)
+			throw (Form::GradeTooHighException());
 	}
 	catch (std::exception &err) {
 		return err.what();
@@ -34,21 +38,21 @@ std::string Form::beSigned(Bureaucrat figure) {
 }
 
 std::string Form::getName() const{
-	std::cout << this->name;
+	//std::cout << this->name;
 	return (name);
 }
 
 int Form::getGradeToExecute() const{
-	std::cout << this->gradeToExecute;
+	//std::cout << this->gradeToExecute;
 	return (gradeToExecute);
 }
 
 int Form::getGradeToSign() const{
-	std::cout << this->gradeToSign;
+	//std::cout << this->gradeToSign;
 	return (gradeToSign);
 }
 
 bool Form::getIsSigned() const{
-	std::cout << this->isSigned;
+	//std::cout << this->isSigned;
 	return (isSigned);
 }
