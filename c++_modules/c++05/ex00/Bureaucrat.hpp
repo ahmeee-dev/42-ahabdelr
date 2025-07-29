@@ -14,7 +14,7 @@ class Bureaucrat {
 	~Bureaucrat();
 	Bureaucrat(Bureaucrat &toCopy);
 	Bureaucrat &operator =(const Bureaucrat &rhs);
-
+	void operator <<(const Bureaucrat &rhs);
 	// Methods
 	std::string getName();
 	int getGrade();

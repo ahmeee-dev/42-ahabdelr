@@ -24,6 +24,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &rhs) {
 	return (*this);
 }
 
+void Bureaucrat::operator<<(const Bureaucrat &rhs) {
+	std::cout << this->name  <<" , bureaucrat grade " << this->grade << std::endl; 
+}
+
+
 int Bureaucrat::getGrade() {
 	std::cout << this->grade << std::endl;
 	return this->grade;
