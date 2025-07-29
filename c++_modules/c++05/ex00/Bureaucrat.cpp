@@ -3,9 +3,9 @@
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {
 	try {
 		if (grade < 1)
-			throw (Bureaucrat::GradeTooLowExeception());
-		else if (grade > 150)
 			throw (Bureaucrat::GradeTooHighException());
+		else if (grade > 150)
+			throw (Bureaucrat::GradeTooLowException());
 	}
 	catch (std::exception &ex) {
 			std::cout << ex.what() << std::endl;
