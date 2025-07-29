@@ -1,0 +1,5 @@
+Costruttore di default
+Costruttore di copia
+Operatore di assegnazione (copy assignment operator)
+Distruttore
+
