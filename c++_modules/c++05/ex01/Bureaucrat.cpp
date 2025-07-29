@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {
 	try {
@@ -24,19 +25,31 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &rhs) {
 	return (*this);
 }
 
-void Bureaucrat::operator<<(const Bureaucrat &rhs) {
-	std::cout << this->name  <<" , bureaucrat grade " << this->grade << std::endl; 
+std::ostream& operator<<(std::ostream&os, const Bureaucrat &rhs) {
+	os << rhs.getName()  <<" , bureaucrat grade " << rhs.getGrade() << std::endl;
+	return os;
 }
 
 
-int Bureaucrat::getGrade() {
+int Bureaucrat::getGrade() const{
 	std::cout << this->grade << std::endl;
 	return this->grade;
 }
 
-std::string Bureaucrat::getName() {
+std::string Bureaucrat::getName() const{
 	std::cout << this->name << std::endl;
 	return this->name;
+}
+
+void Bureaucrat::signForm(Form toSign) {
+	try {
+		std::string outcome = toSign.beSigned(*this);
+		if (outcome != "")
+			throw outcome;
+	} catch (std::exception &err) {
+		std::cout << this->name << " couldn't sign " << toSign.getName() << " because " << err.what() << std::endl;
+	}
+	std::cout << this->name << " signed " << toSign.getName() << std::endl;
 }
 
 void Bureaucrat::incrementGrade(int amount) {

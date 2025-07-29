@@ -1,6 +1,12 @@
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
+
 #include <iostream>
 #include <string>
 #include <exception>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 	private:
@@ -14,12 +20,13 @@ class Bureaucrat {
 	~Bureaucrat();
 	Bureaucrat(Bureaucrat &toCopy);
 	Bureaucrat &operator =(const Bureaucrat &rhs);
-	void operator <<(const Bureaucrat &rhs);
+
 	// Methods
-	std::string getName();
-	int getGrade();
+	std::string getName() const;
+	int getGrade() const;
 	void incrementGrade(int amount);
 	void decrementGrade(int amount);
+	void signForm(Form toSign);
 
 	// Exceptions
 		class GradeTooHighException: public std::exception {
@@ -35,3 +42,7 @@ class Bureaucrat {
 				}
 		};
 };
+
+std::ostream& operator<<(std::ostream&os, const Bureaucrat &rhs);
+
+#endif
