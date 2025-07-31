@@ -1,15 +1,15 @@
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-class ShrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm {
 	private:
 		std::string target;
 
 	public:
-		ShrubberyCreationForm(std::string name, std::string target);
+		RobotomyRequestForm(std::string name, std::string target);
 		std::string execute(Bureaucrat const & executor) const;
 		void specificOperation(const std::string &target) const;
 

@@ -16,7 +16,7 @@ std::string ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 			return (err.what());
 		}
 		specificOperation(this->target);
-	return ("execute");
+	return ("executed");
 }
 
 void ShrubberyCreationForm::specificOperation(const std::string &target) const {
