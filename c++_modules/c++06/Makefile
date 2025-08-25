@@ -1,6 +1,6 @@
 COMPILATOR	= c++
 FLAGS		= -std=c++98 -Wall -Wextra -Werror
-EXECUTABLE	= Bureaucrat
+EXECUTABLE	= ScalarConverter
 SRC			= $(wildcard *.cpp)
 OBJ			= $(SRC:.cpp=.o)
 

@@ -1,5 +1,8 @@
 #include "ScalarConverter.hpp"
 #include <iomanip>
+#include <limits.h>
+#include <limits>
+
 
 void ScalarConverter::convert(std::string str) {
 	if (str == "nan") {
@@ -47,27 +50,54 @@ void ScalarConverter::convert(std::string str) {
 				std::cout << "char: " << (char)(int)std::stof(str) << std::endl; //char
 			else
 				std::cout << "char: " << "Non displayable" << std::endl;
-			std::cout << "int: " << (int)std::stof(str) << std::endl; //int
-			std::cout << "float: " << std::stof(str) << "f" << std::endl; //float
-			std::cout << "double: " << std::stod(str) << std::endl; //double
+			if (std::stol(str) < INT_MAX && std::stol(str) > INT_MIN)
+				std::cout << "int: " << (int)std::stof(str) << std::endl; //int
+			else
+				std::cout << "int: Overflow/Underflow" << std::endl; //int
+			if (std::stold(str) < std::numeric_limits<float>::max() && std::stold(str) > -std::numeric_limits<float>::max())
+				std::cout << "float: " << std::stof(str) << "f" << std::endl; //float
+			else
+				std::cout << "float: Overflow/Underflow" << std::endl;
+			if (std::stold(str) < std::numeric_limits<double>::max() && std::stold(str) > -std::numeric_limits<double>::max())
+				std::cout << "double: " << std::stod(str) << std::endl; //double
+			else
+				std::cout << "double: Overflow/Underflow" << std::endl;
 		}
 		else {
 			if (check == 0)
 				std::cout << "char: " << (char)(int)std::stod(str) << std::endl; //char
 			else
 				std::cout << "char: " << "Non displayable" << std::endl;
-			std::cout << "int: " << (int)std::stod(str) << std::endl; //int
-			std::cout << "float: " << std::stof(str) << "f" << std::endl; //float
-			std::cout << "double: " << std::stod(str) << std::endl; //double
+			if (std::stol(str) < INT_MAX && std::stol(str) > INT_MIN)
+				std::cout << "int: " << (int)std::stod(str) << std::endl; //int
+			else
+				std::cout << "int: Overflow/Underflow" << std::endl; //int
+			if (std::stold(str) < std::numeric_limits<float>::max() && std::stold(str) > -std::numeric_limits<float>::max())
+				std::cout << "float: " << std::stof(str) << "f" << std::endl; //float
+			else
+				std::cout << "float: Overflow/Underflow" << std::endl;
+			if (std::stold(str) < std::numeric_limits<double>::max() && std::stold(str) > -std::numeric_limits<double>::max())
+				std::cout << "double: " << std::stod(str) << std::endl; //double
+			else
+				std::cout << "double: Overflow/Underflow" << std::endl;
 		}
 	} else {
 		if (check == 0)
 			std::cout << "char: " << (char)std::stoi(str) << std::endl; //char
 		else
 				std::cout << "char: " << "Non displayable" << std::endl;
-		std::cout << "int: " << std::stoi(str) << std::endl; //int
-		std::cout << "float: " << std::stof(str) << "f" << std::endl; //float
-		std::cout << "double: " << std::stod(str) << std::endl; //double
+		if (std::stol(str) < INT_MAX && std::stol(str) > INT_MIN)
+			std::cout << "int: " << std::stoi(str) << std::endl; //int
+		else
+			std::cout << "int: Overflow/Underflow" << std::endl; //int
+		if (std::stold(str) < std::numeric_limits<float>::max() && std::stold(str) > -std::numeric_limits<float>::max())
+			std::cout << "float: " << std::stof(str) << "f" << std::endl; //float
+		else
+			std::cout << "float: Overflow/Underflow" << std::endl;
+		if (std::stold(str) < std::numeric_limits<double>::max() && std::stold(str) > -std::numeric_limits<double>::max())
+			std::cout << "double: " << std::stod(str) << std::endl; //double
+		else
+			std::cout << "double: Overflow/Underflow" << std::endl;
 	}
 
 }
