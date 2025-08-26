@@ -5,6 +5,8 @@
 #include <iostream>
 
 class ScalarConverter {
+    private:
+        ScalarConverter() {};
 	public:
 	void static convert(std::string str);
 };
