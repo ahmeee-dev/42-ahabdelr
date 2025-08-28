@@ -36,8 +36,8 @@ int Span::shortestSpan() {
 
 	for (int i = 0; i < this->getFullness(); i++) {
 		for (int j = i + 1; j < this->getFullness(); j++) {
-			if ((*this->getStart() + i + *this->getStart() + j) < shortest)
-				shortest = (*this->getStart() + i + *this->getStart() + j);
+			if (abs(*(this->getStart() + i) - *(this->getStart() + j)) < shortest)
+				shortest = abs(*(this->getStart() + i) - *(this->getStart() + j));
 		}
 	}
 	return (shortest);
@@ -51,8 +51,8 @@ int Span::longestSpan() {
 
 	for (int i = 0; i < this->getFullness(); i++) {
 		for (int j = i + 1; j < this->getFullness(); j++) {
-			if ((*this->getStart() + i + *this->getStart() + j) > longest)
-				longest = *this->getStart() + i + *this->getStart() + j;
+			if (abs(*(this->getStart() + i) - *(this->getStart() + j)) > longest)
+				longest = abs(*(this->getStart() + i) - *(this->getStart() + j));
 		}
 	}
 	return (longest);

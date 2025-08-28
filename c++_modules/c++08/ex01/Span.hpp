@@ -10,10 +10,24 @@ class OutOfRangeException : public std::exception {
 		};
 };
 
+class BadArgumentsException : public std::exception {
+	public:
+		virtual const char *what() const throw() {
+			return ("Unauthorized action: Bad arguments");
+		}
+};
+
+class RangTooBigException : public std::exception {
+	public:
+		virtual const char *what() const throw() {
+			return ("Unauthorized action: Range inserted is too big for Container's availability");
+		}
+};
+
 class NoElementsException : public std::exception {
 	public: 
 		virtual const char *what() const throw() {
-			return ("Unauthorized action: At least one vector result empty");
+			return ("Unauthorized action: Vector results empty");
 		}
 };
 
@@ -31,6 +45,17 @@ class Span {
 		std::vector<int>::iterator getStart();
 		int shortestSpan();
 		int longestSpan();
+
+		template <typename T>
+		void addMultipleNumbers(typename T::iterator begin, typename T::iterator end) {
+			if (begin > end) { throw BadArgumentsException(); };
+			if (end - begin > this->getSize() - this->getFullness()) { throw RangTooBigException(); };
+			for (int i = 0; i < end - begin; i++) {
+				*this->it = *(begin + i);
+				this->it++;
+			}
+		};
+
 };
 
 #endif
