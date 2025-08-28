@@ -25,16 +25,12 @@ class Span {
 
 	public:
 		Span(uint n);
-	
-	void addNumber(int n);
-
-	int getSize();
-
-	int getFullness();
-
-	std::vector<int>::iterator getStart();
-	Span shortestSpan(Span B);
-	Span longestSpan(Span B);
+		void addNumber(int n);
+		int getSize();
+		int getFullness();
+		std::vector<int>::iterator getStart();
+		int shortestSpan();
+		int longestSpan();
 };
 
 #endif

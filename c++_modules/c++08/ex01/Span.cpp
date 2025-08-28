@@ -28,40 +28,32 @@ std::vector<int>::iterator Span::getStart() {
 	return (this->vec.begin());
 }
 
-Span Span::shortestSpan(Span B) {
-	std::vector<int>::iterator tempItB;
-	std::vector<int>::iterator itB;
-	std::vector<int>::iterator tempItA;
-	int shortestSpan = -1;
+int Span::shortestSpan() {
+	int shortest = 2147483647;
 
-	tempItA = this->vec.begin();
-	tempItB = B.getStart();
-	itB = tempItB + B.getFullness();
+	if (this->getFullness() < 2)
+		throw (NoElementsException());
 
-	if (B.getFullness() < 1 || this->getFullness() < 1)
-		throw NoElementsException();
-	while ((tempItA != this->it && tempItB != itB)) {
-		if (abs(*this->it - *itB) < shortestSpan || shortestSpan < 0)
-			shortestSpan = abs(*this->it - *itB);
+	for (int i = 0; i < this->getFullness(); i++) {
+		for (int j = i + 1; j < this->getFullness(); j++) {
+			if ((*this->getStart() + i + *this->getStart() + j) < shortest)
+				shortest = (*this->getStart() + i + *this->getStart() + j);
+		}
 	}
-	return (shortestSpan);
-};
+	return (shortest);
+}
 
-Span Span::longestSpan(Span B) {
-std::vector<int>::iterator tempItB;
-	std::vector<int>::iterator itB;
-	std::vector<int>::iterator tempItA;
-	int longestSpan = -1;
+int Span::longestSpan() {
+	int longest = -2147483648;
 
-	tempItA = this->vec.begin();
-	tempItB = B.getStart();
-	itB = tempItB + B.getFullness();
+	if (this->getFullness() < 2)
+		throw (NoElementsException());
 
-	if (B.getFullness() < 1 || this->getFullness() < 1)
-		throw NoElementsException();
-	while ((tempItA != this->it && tempItB != itB)) {
-		if (abs(*this->it - *itB) > longestSpan || longestSpan < 0)
-			longestSpan = abs(*this->it - *itB);
+	for (int i = 0; i < this->getFullness(); i++) {
+		for (int j = i + 1; j < this->getFullness(); j++) {
+			if ((*this->getStart() + i + *this->getStart() + j) > longest)
+				longest = *this->getStart() + i + *this->getStart() + j;
+		}
 	}
-	return (longestSpan);
+	return (longest);
 }
