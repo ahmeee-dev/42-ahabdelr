@@ -22,6 +22,17 @@ int main() {
 	for (MutantStack<int>::iterator itStart = mStack.begin(); itStart != mStack.end(); itStart++) {
 		std::cout << *itStart << std::endl;
 	}
+	std::cout << "-----------" << std::endl << std::endl;
+
+	mStack.pop();
+	std::cout << "Last element popped" << std::endl << std::endl;
+
+		std::cout << "Elements: " << std::endl;
+	for (MutantStack<int>::iterator itStart = mStack.begin(); itStart != mStack.end(); itStart++) {
+		std::cout << *itStart << std::endl;
+	}
 	std::cout << "-----------" << std::endl;
 
+
+	std::stack<int> s(mStack);
 }

@@ -17,7 +17,10 @@ class MutantStack : public std::stack<T> {
 		typename std::deque<T>::iterator end() { return (this->c.end()); };
 		void push(T elem) {this->c.push_back(elem); };
 		void pop() { this->c.pop_back(); };
+		bool empty() { return (this->c.empty()); };
 		T top() { return (this->c.back()); }; 
+		int size() { return (this->c.size()); }
+	
 	//definisci classe iterator
 };
 
