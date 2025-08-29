@@ -4,22 +4,21 @@
 #include <exception>
 #include <stack>
 #include <iostream>
+#include <iterator>
 
 template <typename T>
 class MutantStack : public std::stack<T> {
 
-	private:
-		typename std::stack<T> mutant;
-		typename std::stack<T> *itStart;
-		typename std::stack<T> *itEnd;
-	
-	public:
-		MutantStack() {	this->mutant = std::stack<T>(); };
-		template <typename A>
-		MutantStack(A stackType) { this->mutant = std::stack<T>(stackType); };
+	public: 
+		typedef typename std::deque<T>::iterator iterator;
+		MutantStack() {};
 
-		//typename std::stack<T> *getStart() { return this->mutant.begin(); };
-		//typename std::stack<T> *getEnd() { return this->mutant.end(); }
+		typename std::deque<T>::iterator begin() { return (this->c.begin()); };
+		typename std::deque<T>::iterator end() { return (this->c.end()); };
+		void push(T elem) {this->c.push_back(elem); };
+		void pop() { this->c.pop_back(); };
+		T top() { return (this->c.back()); }; 
+	//definisci classe iterator
 };
 
 #endif
